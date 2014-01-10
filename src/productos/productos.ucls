@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="productos.Puerta" project="LaberintoFM" 
     file="/LaberintoFM/src/productos/Puerta.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="96" y="302"/>    
+    <position height="-1" width="-1" x="102" y="301"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,27 +30,27 @@
   </class>  
   <class id="4" language="java" name="productos.Habitacion" project="LaberintoFM" 
     file="/LaberintoFM/src/productos/Habitacion.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="458" y="145"/>    
+    <position height="-1" width="-1" x="457" y="169"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="5">    
+  <generalization id="5">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <association id="6">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="6" name="tablero"/>      
-      <multiplicity id="7" minimum="0" maximum="2147483647"/>    
+      <attribute id="7" name="tablero"/>      
+      <multiplicity id="8" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="8">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
   <generalization id="9">    
-    <end type="SOURCE" refId="3"/>    
+    <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

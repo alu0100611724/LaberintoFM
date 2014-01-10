@@ -19,7 +19,7 @@ public class Puerta extends LugarHab {
      * Las puertas conectan dos habitaciones.
      */
     public Puerta() {
-        super('+');
+        super('#');
         this.otroLadoPuerta = -1;
     }
 

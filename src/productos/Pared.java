@@ -11,7 +11,7 @@ public class Pared extends LugarHab {
      * Constructor Pared.
      */
     public Pared() {
-        super('*');
+        super('+');
     }
 
 }

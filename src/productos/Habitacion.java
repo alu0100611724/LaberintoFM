@@ -13,9 +13,14 @@ public class Habitacion {
     private static int cont = 0;
 
     /**
-     * Id. autoincremental que se le asignara a cada habitacion.
+     * Tamano minimo de las habitaciones.
      */
     private static final int TAM_MIN = 5;
+
+    /**
+     * Numero de puertas maximo que tiene cada habitacion.
+     */
+    private static final int MAX_PUERTAS = 4;
 
     /**
      * Id de la habitacion actual.
@@ -82,20 +87,78 @@ public class Habitacion {
     }
 
     /**
+     * Devuelve el elemento en la posicion (i,j).
+     * @param i Eje horizontal.
+     * @param j Eje vertical.
+     * @return El elemento en dicha posicion.
+     */
+    public final LugarHab getElemento(final int i, final int j) {
+        return tablero[i][j];
+    }
+
+    /**
+     * Asgian el elemento h en la posicion (i,j).
+     * @param h Elemento LugarHab.
+     * @param i Eje horizontal.
+     * @param j Eje vertical.
+     */
+    public final void setElemento(final LugarHab h, final int i, final int j) {
+        tablero[i][j] = h;
+    }
+
+    /**
      * Agrega n puertas a la habitacion.
      * @param n numero de pueras. Maximo 4 puertas por habitacion.
+     * @exception IllegalArgumentException Cada habitacion debe
+     * tener entre 1 y 4 puertas.
      */
-    public void addPuertas(final int n) {
-
+    public void addPuertas(final int n) throws IllegalArgumentException {
+        if ((n > MAX_PUERTAS) || (n <= 0)) {
+            throw new IllegalArgumentException("Cada habitacion tiene como "
+                    + "como min 1 puerta y 4 como maximo.");
+        }
+        switch (n) {
+            case 4:
+                tablero[tam - 1][tam / 2] = new Puerta();
+            case 3:
+                tablero[tam / 2][tam - 1] = new Puerta();
+            case 2:
+                tablero[tam / 2][0] = new Puerta();
+            case 1:
+                tablero[0][tam / 2] = new Puerta();
+            default:
+            break;
+        }
     }
 
     /**
      * Conecta una puerta de esta habitacion con el id de otra hab.
-     * @param i recibe el id de la puerta a la que se desea conectar.
-     * @return true si exito, false si error.
+     * @param p Puerta de la habitacion que conecta a otra.
+     * @param hab recibe el id de la habitacion a la que se desea conectar.
+     * @exception IllegalArgumentException Id incorrecto.
      */
-    public final boolean conectarPuerta(final int i) {
-        return true;
+    public final void conectarPuerta(final int p, final int hab)
+           throws IllegalArgumentException {
+
+        if ((hab <= 0) || (hab > cont)) {
+            throw new IllegalArgumentException("La habitacion a la que "
+                    + "desea conectar no existe.");
+        }
+        switch (p) {
+            case 4:
+                ((Puerta) tablero[tam - 1][tam / 2]).setOtroLadoPuerta(hab);
+                break;
+            case 3:
+                ((Puerta) tablero[tam / 2][tam - 1]).setOtroLadoPuerta(hab);
+                break;
+            case 2:
+                ((Puerta) tablero[tam / 2][0]).setOtroLadoPuerta(hab);
+                break;
+            case 1:
+                ((Puerta) tablero[0][tam / 2]).setOtroLadoPuerta(hab);
+                break;
+            default: break;
+        }
     }
 
     /**
