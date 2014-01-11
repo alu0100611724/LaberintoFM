@@ -87,6 +87,22 @@ public class Habitacion {
     }
 
     /**
+     * Devuelve la Habitacion con todos sus elementos.
+     * @return the tablero
+     */
+    public final LugarHab[][] getTablero() {
+        return tablero;
+    }
+
+    /**
+     * Cambia la habitacion con todos sus elementos.
+     * @param t the tablero to set
+     */
+    public final void setTablero(final LugarHab[][] t) {
+        this.tablero = t;
+    }
+
+    /**
      * Devuelve el elemento en la posicion (i,j).
      * @param i Eje horizontal.
      * @param j Eje vertical.
@@ -157,8 +173,24 @@ public class Habitacion {
             case 1:
                 ((Puerta) tablero[0][tam / 2]).setOtroLadoPuerta(hab);
                 break;
-            default: break;
+            default:
+                throw new IllegalArgumentException("La puerta no existe ");
         }
+    }
+
+    /**
+     * Agrega un personaje a la habitacion.
+     * @param p personaje.
+     */
+    public final void addPersonaje(final Personaje p) {
+        NumAleatorio n = new NumAleatorio(tam - 1);
+        int i = n.next();
+        int j = n.next();
+        while (tablero[i][j].getImagen() != ' ') {
+            i = n.next();
+            j = n.next();
+        }
+        setElemento(p, i, j);
     }
 
     /**

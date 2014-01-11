@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="productos.Habitacion" project="LaberintoFM" 
     file="/LaberintoFM/src/productos/Habitacion.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="457" y="169"/>    
+    <position height="-1" width="-1" x="487" y="193"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -41,18 +41,18 @@
     <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <generalization id="6">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <association id="7">    
+  <association id="6">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="8" name="tablero"/>      
-      <multiplicity id="9" minimum="0" maximum="2147483647"/>    
+      <attribute id="7" name="tablero"/>      
+      <multiplicity id="8" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <generalization id="9">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
