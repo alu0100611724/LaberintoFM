@@ -8,11 +8,6 @@ package productos;
 public class Habitacion {
 
     /**
-     * Id. autoincremental que se le asignara a cada habitacion.
-     */
-    private static int cont = 0;
-
-    /**
      * Tamano minimo de las habitaciones.
      */
     private static final int TAM_MIN = 5;
@@ -21,11 +16,6 @@ public class Habitacion {
      * Numero de puertas maximo que tiene cada habitacion.
      */
     private static final int MAX_PUERTAS = 4;
-
-    /**
-     * Id de la habitacion actual.
-     */
-    private int id;
 
     /**
      * El tablero almacena los elementos que componen a una habitacion.
@@ -48,8 +38,6 @@ public class Habitacion {
             throw new IllegalArgumentException("Tamagno minimo de "
                     + "la habitacion es 5.");
         }
-        incrementarCont();
-        id = Habitacion.getCont();
         tam = t;
         tablero = new LugarHab[tam][tam];
         for (int i = 0; i < tam; i++) {
@@ -61,29 +49,6 @@ public class Habitacion {
                 }
             }
         }
-    }
-
-    /**
-     * Devuelve el numero de habitaciones creadas.
-     * @return the id
-     */
-    public static int getCont() {
-        return Habitacion.cont;
-    }
-
-    /**
-     * Incrementa el id. en una unidad.
-     */
-    private void incrementarCont() {
-        Habitacion.cont++;
-    }
-
-    /**
-     * Devuelve el numero de la habitacion actual.
-     * @return nuemero de habitacion.
-     */
-    public final int getId() {
-        return id;
     }
 
     /**
@@ -151,15 +116,11 @@ public class Habitacion {
      * Conecta una puerta de esta habitacion con el id de otra hab.
      * @param p Puerta de la habitacion que conecta a otra.
      * @param hab recibe el id de la habitacion a la que se desea conectar.
-     * @exception IllegalArgumentException Id incorrecto.
+     * @exception IllegalArgumentException Puerta no existe.
      */
     public final void conectarPuerta(final int p, final int hab)
            throws IllegalArgumentException {
 
-        if ((hab <= 0) || (hab > cont)) {
-            throw new IllegalArgumentException("La habitacion a la que "
-                    + "desea conectar no existe.");
-        }
         switch (p) {
             case 4:
                 ((Puerta) tablero[tam - 1][tam / 2]).setOtroLadoPuerta(hab);

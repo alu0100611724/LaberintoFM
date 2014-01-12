@@ -12,3 +12,5 @@ Para su implementacion se utilizan las siguientes herramientas:
 * PMD.
 * FindBugs.
 * Github.
+
+Version 0.0.4 - Falta implementar la jugabilidad.

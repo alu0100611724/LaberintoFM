@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package productos;
 
 import java.util.Calendar;

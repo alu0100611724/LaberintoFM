@@ -37,23 +37,6 @@ public class HabitacionTest {
     }
 
     /**
-     * Comprobacion del contador.
-     */
-    @Test
-    public final void testContador() {
-        assertEquals(2, Habitacion.getCont());
-    }
-
-    /**
-     * Test method for getId.
-     */
-    @Test
-    public final void testNumDeHabitacion() {
-        assertEquals(1, h1.getId());
-        assertEquals(2, h2.getId());
-    }
-
-    /**
      * Test method for AddPuertas.
      */
     @Test
@@ -67,10 +50,10 @@ public class HabitacionTest {
      */
     @Test
     public final void testConectarPuerta() {
-        h1.conectarPuerta(1, h2.getId());
-        h2.conectarPuerta(1, h1.getId());
+        h1.conectarPuerta(1, 1);
+        h2.conectarPuerta(1, 0);
 
-        assertEquals(2, ((Puerta) h1.getElemento(0, 2)).getOtroLadoPuerta());
-        assertEquals(1, ((Puerta) h2.getElemento(0, 2)).getOtroLadoPuerta());
+        assertEquals(1, ((Puerta) h1.getElemento(0, 2)).getOtroLadoPuerta());
+        assertEquals(0, ((Puerta) h2.getElemento(0, 2)).getOtroLadoPuerta());
     }
 }
