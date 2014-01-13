@@ -3,11 +3,7 @@ package cliente;
 import productos.Habitacion;
 import productos.Heroe;
 import productos.Laberinto;
-import productos.LugarHab;
 import productos.Monstruo;
-import productos.Pared;
-import productos.Posicion;
-import productos.Puerta;
 
 /**
  * Representa al ciente que utiliza el framework.
@@ -35,8 +31,8 @@ public class Cliente {
             lab.addHab(h2);
             lab.setHabActual(1);
             lab.conectarHabitaciones(1, 0, 1, 1);
-            System.out.println("\ndebe ser 1: " + ((Puerta) h1.getElemento(new Posicion(0, 2))).getOtroLadoPuerta());
-            System.out.println("debe ser 0: " + ((Puerta) h2.getElemento(new Posicion(0, 4))).getOtroLadoPuerta());
+            //System.out.println("\ndebe ser 1: " + ((Puerta) h1.getElemento(new Posicion(0, 2))).getOtroLadoPuerta());
+            //System.out.println("debe ser 0: " + ((Puerta) h2.getElemento(new Posicion(0, 4))).getOtroLadoPuerta());
             lab.play();
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());

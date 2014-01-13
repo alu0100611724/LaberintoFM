@@ -2,7 +2,6 @@
 package productos;
 
 import estrategias.ComportamientoAleatorio;
-import estrategias.ComportamientoNormal;
 import estrategias.IComportamiento;
 
 /**
