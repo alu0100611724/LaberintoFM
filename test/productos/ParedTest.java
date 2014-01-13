@@ -63,7 +63,7 @@ public class ParedTest {
      */
     @Test
     public final void testGetImagen() {
-        assertEquals('*', pared.getImagen());
+        assertEquals('+', pared.getImagen());
     }
 
     /**

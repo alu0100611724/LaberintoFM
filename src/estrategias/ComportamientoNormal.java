@@ -3,6 +3,8 @@
  */
 package estrategias;
 
+import productos.Posicion;
+
 /**
  * Esta clase de comportamiento sera la que utilicen los jugadores.
  * @author Mauri
@@ -12,30 +14,25 @@ public class ComportamientoNormal implements IComportamiento {
 
     /**
      * Describe los movimientos del personaje segun su estado.
-     * @param i posicion actual en el eje vertical.
-     * @param j posicion actual en el eje horizontal.
+     * @param pos Posicion en la habitacion.
      * @param m posicion a la que se desea mover.
      * @return La nueva posicion.
-     * @throws IllegalArgumentException No es una posicion valida.
      */
     @Override
-    public final int[] moveCommand(int i, int j, final char m)
-            throws IllegalArgumentException {
+    public final Posicion moveCommand(final Posicion pos, final char m) {
+        Posicion pos2 = new Posicion(pos.getRow(), pos.getCol());
         switch (m) {
-        case 'w': i--; //arriba
+        case 'w': pos2.setRow(pos2.getRow() - 1); //arriba
                   break;
-        case 's': i++; //abajo
+        case 's': pos2.setRow(pos2.getRow() + 1); //abajo
                   break;
-        case 'a': j--; //izquierda
+        case 'a': pos2.setCol(pos2.getCol() - 1); //izquierda
                   break;
-        case 'd': j++; //derecha
+        case 'd': pos2.setCol(pos2.getCol() + 1);
                   break;
-        default:  throw new IllegalArgumentException("Tecla no admitida.");
+        default:  break;
         }
-        int[] result = new int[2];
-        result[0] = i;
-        result[1] = j;
-        return result;
+        return pos2;
     }
 
 }

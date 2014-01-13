@@ -1,5 +1,7 @@
 package productos;
 
+import java.util.ArrayList;
+
 /**
  * Elemento del cual estara formado el laberinto.
  * @author Mauri
@@ -28,12 +30,19 @@ public class Habitacion {
     private int tam;
 
     /**
+     * Lista de personajes para acceder directamente a ellos y su posicion.
+     * Primero se agregan los monstruos y por ultimo siempre el heroe.
+     */
+    private ArrayList < Personaje > personajes;
+
+    /**
      * Constructor Habitacion.
      * Las habitaciones conforman el laberinto
      * @param t Es el tamagno de la habitacion.
      * @exception IllegalArgumentException Tamangno minimo aceptado de 5.
      */
     public Habitacion(final int t) throws IllegalArgumentException {
+        personajes = new ArrayList < Personaje >();
         if (t < TAM_MIN) {
             throw new IllegalArgumentException("Tamagno minimo de "
                     + "la habitacion es 5.");
@@ -52,6 +61,18 @@ public class Habitacion {
     }
 
     /**
+     * Devuevle el personaje i de la lista.
+     * @param i index.
+     * @return Personaje.
+     * @throws Exception Lista vacia.
+     */
+    public final Personaje getPersonaje(final int i) throws Exception {
+        if (personajes.isEmpty()) {
+            throw new Exception("La lista esta vacia");
+        }
+        return (personajes.get(i));
+    }
+    /**
      * Devuelve la Habitacion con todos sus elementos.
      * @return the tablero
      */
@@ -69,22 +90,20 @@ public class Habitacion {
 
     /**
      * Devuelve el elemento en la posicion (i,j).
-     * @param i Eje horizontal.
-     * @param j Eje vertical.
+     * @param pos Posicion del elemento en la habitacion.
      * @return El elemento en dicha posicion.
      */
-    public final LugarHab getElemento(final int i, final int j) {
-        return tablero[i][j];
+    public final LugarHab getElemento(final Posicion pos) {
+        return tablero[pos.getRow()][pos.getCol()];
     }
 
     /**
      * Asgian el elemento h en la posicion (i,j).
      * @param h Elemento LugarHab.
-     * @param i Eje horizontal.
-     * @param j Eje vertical.
+     * @param pos Posicion del elemento en la habitacion.
      */
-    public final void setElemento(final LugarHab h, final int i, final int j) {
-        tablero[i][j] = h;
+    public final void setElemento(final LugarHab h, final Posicion pos) {
+        tablero[pos.getRow()][pos.getCol()] = h;
     }
 
     /**
@@ -151,7 +170,10 @@ public class Habitacion {
             i = n.next();
             j = n.next();
         }
-        setElemento(p, i, j);
+        Posicion posicion = new Posicion(i, j);
+        p.setPos(posicion);
+        personajes.add(p);
+        setElemento(p, posicion);
     }
 
     /**
@@ -164,5 +186,47 @@ public class Habitacion {
                 System.out.print(" " + tablero[i][j].getImagen());
             }
         }
+    }
+
+    /**
+     * Este metodo implementa la jugabilidad en el laberinto.
+     * @param dir es la direccion a la que se desea mover.
+     * @return -1 => misma habitacion, -2 => game over y en otro caso es la
+     * nueva habActual.
+     */
+    public final int play(final char dir) {
+        /*
+         * 1. Movemos al heroe
+         *      comprobamos si pos = vacio || puerta
+         * 2. Movemos los monstruos (antes comprobamos si vacio)
+         *
+         * Si posicion == '#'
+         *    return getElemento(pos).getOtroLadoPuerta();
+         * sino si gameOver return -2
+         * sino continua igual y devolvemos -1
+         */
+        //Mover HEROE
+        Personaje heroe = personajes.get(personajes.size() - 1);
+        Posicion p1 = heroe.getPos();
+        Posicion p2 = heroe.move(p1, dir);
+        if (getElemento(p2).getImagen() == ' ') {
+            heroe.setPos(p2);
+            setElemento(heroe, p2); // movemos al heroe
+            setElemento(new LugarHab(), p1); // vaciamos su antigua posicion.
+        } else if (getElemento(p2).getImagen() == '#') {
+            return (((Puerta) getElemento(p2)).getOtroLadoPuerta()); //<-------- Falta cambiar la pos heroe a la nueva hab
+        }
+
+        //Mover Monstruos
+        for (int i = 0; i < personajes.size() - 1; i++) {
+            Posicion pA = personajes.get(i).getPos();
+            Posicion pS = personajes.get(i).move(pA, dir);
+            if (getElemento(pS).getImagen() == ' ') {
+                personajes.get(i).setPos(pS);
+                setElemento(personajes.get(i), pS); // movemos al heroe
+                setElemento(new LugarHab(), pA); // vaciamos su antigua posicion
+            }
+        }
+        return -1;
     }
 }

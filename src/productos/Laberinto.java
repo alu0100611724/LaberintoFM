@@ -1,5 +1,8 @@
 package productos;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 /**
@@ -9,10 +12,6 @@ import java.util.ArrayList;
  */
 public class Laberinto {
 
-    /* Crear un metodo conectar puerta x de la hab actual
-     * con la puerta y de otra habitacion.
-     * conectarHabs(int x, int y, int h2) {}
-     */
     /**
      * El laberinto esta formado por habitaciones.
      */
@@ -23,6 +22,14 @@ public class Laberinto {
      * Debe ser la misma en la que se encuentre el heroe.
      */
     private int habActual;
+
+    /**
+     * Constructor.
+     */
+    public Laberinto() {
+        habitaciones = new ArrayList < Habitacion >();
+        habActual = -1;
+    }
 
     /**
      * Devuelve la habitacion donde esta el heroe.
@@ -42,14 +49,6 @@ public class Laberinto {
             throw new IllegalArgumentException("La habitacion no existe.");
         }
         this.habActual = hab;
-    }
-
-    /**
-     * Constructor.
-     */
-    public Laberinto() {
-        habitaciones = new ArrayList < Habitacion >();
-        habActual = -1;
     }
 
     /**
@@ -84,7 +83,38 @@ public class Laberinto {
      * Pinta la habitacion donde se encuentra el heroe.
      */
     public final void pintar() {
+        //falta limpiar la pantalla
         System.out.println("\nHabitacion " + habActual);
         habitaciones.get(habActual).pintar();
+    }
+
+    /**
+     * Este metodo implementa la jugabilidad en el laberinto.
+     */
+    public final void play() {
+        BufferedReader read = new BufferedReader(
+                new InputStreamReader(System.in));
+        int estado = -1;
+        int i = 0;
+        do {
+            for (int j = 0; j < 25; j++) { //limpiar pantalla
+                System.out.println();
+            }
+            pintar();
+            System.out.print("\nPresione a,s,d,w para moverse: ");
+            try {
+                char c = read.readLine().charAt(0);
+                estado = habitaciones.get(habActual).play(c);
+                //System.out.println("char: " + c + " Estado: " + estado);
+            } catch (Exception e) { }
+            if (estado != -1) {
+                habActual = estado;
+            }
+            i++; //<------------------------------------------- Esto es temp
+            if (i == 10) {
+                estado = -2;
+            }
+        } while (estado != -2);
+        System.out.println("\nGAME OVER");
     }
 }

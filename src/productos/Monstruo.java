@@ -1,6 +1,8 @@
 
 package productos;
 
+import estrategias.ComportamientoAleatorio;
+import estrategias.ComportamientoNormal;
 import estrategias.IComportamiento;
 
 /**
@@ -14,6 +16,7 @@ public class Monstruo extends Personaje {
      */
     public Monstruo() {
         super();
+        setComp(new ComportamientoAleatorio());
         setImagen('M');
     }
     /**
@@ -23,5 +26,16 @@ public class Monstruo extends Personaje {
     public Monstruo(final IComportamiento comp) {
         super(comp);
         setImagen('M');
+    }
+
+    /**
+     * Constructor Monstruo con comportamiento asignado.
+     * @param comp Comportamiento
+     * @param posicion Posicion del Monstruo en la habitacion.
+     */
+    public Monstruo(final IComportamiento comp, final Posicion posicion) {
+        super(comp);
+        setImagen('M');
+        setPos(posicion);
     }
 }

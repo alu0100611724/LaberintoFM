@@ -1,6 +1,7 @@
 
 package productos;
 
+import estrategias.ComportamientoNormal;
 import estrategias.IComportamiento;
 
 /**
@@ -14,6 +15,7 @@ public class Heroe extends Personaje {
      */
     public Heroe() {
         super();
+        setComp(new ComportamientoNormal());
         setImagen('@');
     }
     /**
@@ -23,5 +25,16 @@ public class Heroe extends Personaje {
     public Heroe(final IComportamiento comp) {
         super(comp);
         setImagen('@');
+    }
+
+    /**
+     * Constructor Heroe con comportamiento asignado.
+     * @param comp Comportamiento
+     * @param posicion Posicion del heroe en la habitacion.
+     */
+    public Heroe(final IComportamiento comp, final Posicion posicion) {
+        super(comp);
+        setImagen('@');
+        setPos(posicion);
     }
 }

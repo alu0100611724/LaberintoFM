@@ -41,8 +41,8 @@ public class HabitacionTest {
      */
     @Test
     public final void testAddPuertas() {
-        assertEquals('#', h1.getElemento(0, 2).getImagen());
-        assertEquals('#', h2.getElemento(0, 2).getImagen());
+        assertEquals('#', h1.getElemento(new Posicion (0, 2)).getImagen());
+        assertEquals('#', h2.getElemento(new Posicion (0, 2)).getImagen());
     }
 
     /**
@@ -53,7 +53,7 @@ public class HabitacionTest {
         h1.conectarPuerta(1, 1);
         h2.conectarPuerta(1, 0);
 
-        assertEquals(1, ((Puerta) h1.getElemento(0, 2)).getOtroLadoPuerta());
-        assertEquals(0, ((Puerta) h2.getElemento(0, 2)).getOtroLadoPuerta());
+        assertEquals(1, ((Puerta) h1.getElemento(new Posicion (0, 2))).getOtroLadoPuerta());
+        assertEquals(0, ((Puerta) h2.getElemento(new Posicion (0, 2))).getOtroLadoPuerta());
     }
 }
