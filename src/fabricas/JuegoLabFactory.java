@@ -34,7 +34,7 @@ public class JuegoLabFactory {
      * Fabrica el Heroe.
      * @return El Heroe.
      */
-    private Heroe fabricarHeroe() {
+    protected Heroe fabricarHeroe() {
         return new Heroe();
     }
 
@@ -50,7 +50,7 @@ public class JuegoLabFactory {
      * Cronstruye el Laberinto en el que juegar.
      * @return El Laberinto.
      */
-    public final Laberinto crearLab() {
+    public Laberinto crearLab() {
 
         // Fabricamos el laberinto
         Laberinto lab = fabricarLab();

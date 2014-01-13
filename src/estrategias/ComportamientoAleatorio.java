@@ -3,8 +3,8 @@
  */
 package estrategias;
 
-import productos.NumAleatorio;
-import productos.Posicion;
+import complementos.NumAleatorio;
+import complementos.Posicion;
 
 /**
  * Esta clase de comportamiento sera uno de los estados de los bots.

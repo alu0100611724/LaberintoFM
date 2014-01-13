@@ -1,5 +1,5 @@
 
-package productos;
+package complementos;
 
 /**
  * Indica posicion de un elemento dentro de la habitacion.

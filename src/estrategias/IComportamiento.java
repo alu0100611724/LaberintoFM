@@ -3,7 +3,7 @@
  */
 package estrategias;
 
-import productos.Posicion;
+import complementos.Posicion;
 
 /**
  * Interfaz Comportamiento.

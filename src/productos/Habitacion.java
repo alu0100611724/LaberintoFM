@@ -2,6 +2,9 @@ package productos;
 
 import java.util.ArrayList;
 
+import complementos.NumAleatorio;
+import complementos.Posicion;
+
 /**
  * Elemento del cual estara formado el laberinto.
  * @author Mauri
@@ -22,18 +25,18 @@ public class Habitacion {
     /**
      * El tablero almacena los elementos que componen a una habitacion.
      */
-    private LugarHab[][] tablero;
+    protected LugarHab[][] tablero;
 
     /**
      * Es el tamagno de la habitacion. Las Habitaciones son todas cuadradas.
      */
-    private int tam;
+    protected int tam;
 
     /**
      * Lista de personajes para acceder directamente a ellos y su posicion.
      * Primero se agregan los monstruos y por ultimo siempre el heroe.
      */
-    private ArrayList < Personaje > personajes;
+    protected ArrayList < Personaje > personajes;
 
     /**
      * Constructor Habitacion.
@@ -119,11 +122,11 @@ public class Habitacion {
         }
         switch (n) {
             case 4:
-                tablero[tam - 1][tam / 2] = new Puerta();
-            case 3:
                 tablero[tam / 2][tam - 1] = new Puerta();
-            case 2:
+            case 3:
                 tablero[tam / 2][0] = new Puerta();
+            case 2:
+                tablero[tam - 1][tam / 2] = new Puerta();
             case 1:
                 tablero[0][tam / 2] = new Puerta();
             default:
@@ -142,13 +145,13 @@ public class Habitacion {
 
         switch (p) {
             case 4:
-                ((Puerta) tablero[tam - 1][tam / 2]).setOtroLadoPuerta(hab);
-                break;
-            case 3:
                 ((Puerta) tablero[tam / 2][tam - 1]).setOtroLadoPuerta(hab);
                 break;
-            case 2:
+            case 3:
                 ((Puerta) tablero[tam / 2][0]).setOtroLadoPuerta(hab);
+                break;
+            case 2:
+                ((Puerta) tablero[tam - 1][tam / 2]).setOtroLadoPuerta(hab);
                 break;
             case 1:
                 ((Puerta) tablero[0][tam / 2]).setOtroLadoPuerta(hab);
@@ -162,7 +165,7 @@ public class Habitacion {
      * Agrega un personaje a la habitacion.
      * @param p personaje.
      */
-    public final void addPersonaje(final Personaje p) {
+    public void addPersonaje(final Personaje p) {
         NumAleatorio n = new NumAleatorio(tam - 1);
         int i = n.next();
         int j = n.next();
@@ -194,7 +197,7 @@ public class Habitacion {
      * @return -1 => misma habitacion, -2 => game over y en otro caso es la
      * nueva habActual.
      */
-    public final int play(final char dir) {
+    public int play(final char dir) {
         /*
          * 1. Movemos al heroe
          *      comprobamos si pos = vacio || puerta

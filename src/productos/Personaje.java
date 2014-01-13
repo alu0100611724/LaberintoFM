@@ -1,5 +1,7 @@
 package productos;
 
+import complementos.Posicion;
+
 import estrategias.ComportamientoZombie;
 import estrategias.IComportamiento;
 
@@ -24,7 +26,7 @@ public class Personaje extends LugarHab {
      * Constructor Personaje.
      */
     public Personaje() {
-        super('P');
+        super('&');
         c = new ComportamientoZombie();
         pos = new Posicion(1, 1);
     }
@@ -34,7 +36,7 @@ public class Personaje extends LugarHab {
      * @param comp Comportamiento.
      */
     public Personaje(final IComportamiento comp) {
-        super('P');
+        super('&');
         c = comp;
         pos = new Posicion(1, 1);
     }

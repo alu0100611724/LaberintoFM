@@ -3,7 +3,7 @@
  */
 package estrategias;
 
-import productos.Posicion;
+import complementos.Posicion;
 
 /**
  * Esta clase de comportamiento sera uno de los estados de los bots.

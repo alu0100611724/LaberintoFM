@@ -1,6 +1,7 @@
 package cliente;
 
 import fabricas.JuegoLabFactory;
+import fabricas.JuegoPokemonLabFactory;
 import productos.Laberinto;
 
 /**
@@ -15,7 +16,7 @@ public class Cliente {
      */
     public static void main(final String[] args) {
         try {
-            JuegoLabFactory juegoLab = new JuegoLabFactory();
+            JuegoLabFactory juegoLab = new JuegoPokemonLabFactory();
             Laberinto lab = juegoLab.crearLab();
             lab.play();
         } catch (Exception e) {

@@ -14,13 +14,13 @@ public class Laberinto {
     /**
      * El laberinto esta formado por habitaciones.
      */
-    private ArrayList < Habitacion > habitaciones;
+    protected ArrayList < Habitacion > habitaciones;
 
     /**
      * Esta es la habitacion que se debe mostrar en el juego.
      * Debe ser la misma en la que se encuentre el heroe.
      */
-    private int habActual;
+    protected int habActual;
 
     /**
      * Constructor.
@@ -90,7 +90,7 @@ public class Laberinto {
     /**
      * Este metodo implementa la jugabilidad en el laberinto.
      */
-    public final void play() {
+    public void play() {
         BufferedReader read = new BufferedReader(
                 new InputStreamReader(System.in));
         int estado = -1;

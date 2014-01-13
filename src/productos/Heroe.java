@@ -1,6 +1,8 @@
 
 package productos;
 
+import complementos.Posicion;
+
 import estrategias.ComportamientoNormal;
 import estrategias.IComportamiento;
 

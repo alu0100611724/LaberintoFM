@@ -1,8 +1,11 @@
 package productos;
 
 import static org.junit.Assert.*;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import complementos.Posicion;
 
 /**
  * Clase para testear el funcionamiento de la clase Habitacion.

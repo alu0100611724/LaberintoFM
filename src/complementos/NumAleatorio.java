@@ -1,5 +1,5 @@
 
-package productos;
+package complementos;
 
 import java.util.Calendar;
 import java.util.Random;
