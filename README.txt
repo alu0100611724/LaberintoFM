@@ -1,4 +1,4 @@
-JUEGO DEL LABERINTO - Factory Method
+JUEGO DEL LABERINTO
 
 Version 1.0.0 - Estructura funcional basica del juego.
 Este programa es un juego diseñado para la clase de Diseño de Patrones Arquitectónicos.
