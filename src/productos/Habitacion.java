@@ -214,7 +214,7 @@ public class Habitacion {
             setElemento(heroe, p2); // movemos al heroe
             setElemento(new LugarHab(), p1); // vaciamos su antigua posicion.
         } else if (getElemento(p2).getImagen() == '#') {
-            return (((Puerta) getElemento(p2)).getOtroLadoPuerta()); //<-------- Falta cambiar la pos heroe a la nueva hab
+            return (((Puerta) getElemento(p2)).getOtroLadoPuerta());
         }
 
         //Mover Monstruos

@@ -83,7 +83,7 @@ public class Laberinto {
      */
     public final void pintar() {
         //falta limpiar la pantalla
-        System.out.println("\nHabitacion " + habActual);
+        System.out.println("\nHabitacion " + (habActual + 1));
         habitaciones.get(habActual).pintar();
     }
 
@@ -100,7 +100,7 @@ public class Laberinto {
                 System.out.println();
             }
             pintar();
-            System.out.print("\nPresione a,s,d,w para moverse: ");
+            System.out.print("\n\nPresione a,s,d,w para moverse: ");
             try {
                 char c = read.readLine().charAt(0);
                 estado = habitaciones.get(habActual).play(c);
@@ -110,7 +110,7 @@ public class Laberinto {
                 habActual = estado;
             }
             i++; //<------------------------------------------- Esto es temp
-            if (i == 10) {
+            if (i == 20) {
                 estado = -2;
             }
         } while (estado != -2);

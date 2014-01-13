@@ -1,6 +1,6 @@
 JUEGO DEL LABERINTO
 
-Version 2.0.0 - Implementando Factory Method.
+Version 2.0.1 - Factory Method (Crea un laberinto simple).
 Este programa es un juego diseñado para la clase de Diseño de Patrones Arquitectónicos.
 Para su implementacion se utilizan las siguientes herramientas:
 
