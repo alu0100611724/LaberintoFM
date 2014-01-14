@@ -54,10 +54,6 @@ public class MarioHab extends Habitacion {
             break;
         }
 
-        if (isEnemigoCerca(p2)) {
-            vidas--;
-        }
-
         //Mover Monstruos
         for (int i = 0; i < personajes.size() - 1; i++) {
             Posicion pA = personajes.get(i).getPos();
@@ -69,6 +65,9 @@ public class MarioHab extends Habitacion {
             }
         }
 
+        if (isEnemigoCerca(p2)) {
+            vidas--;
+        }
         //Si no los hemos atrapados a todos y seguimos en la misma hab.
         if (vidas > 0) {
             return -1;
@@ -87,7 +86,7 @@ public class MarioHab extends Habitacion {
 
         for (int i = p.getRow() - 1; i <= p.getRow() + 1; i++) {
             for (int j = p.getCol() - 1; j <= p.getCol() + 1; j++) {
-                if (tablero[i][j].getImagen() == 'F') {
+                if (tablero[i][j].getImagen() == 'K') {
                     return true;
                 }
             }
