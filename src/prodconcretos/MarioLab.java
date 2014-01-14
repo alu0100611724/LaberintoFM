@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package prodconcretos;
 
 import java.io.BufferedReader;

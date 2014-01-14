@@ -3,9 +3,10 @@ package cliente;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-import fabricas.JuegoLabFactory;
-import fabricas.JuegoMarioLabFactory;
-import fabricas.JuegoPokemonLabFactory;
+import builder.Builder;
+import builder.Director;
+import builder.JuegoMarioLabBuilder;
+import builder.JuegoPokemonLabBuilder;
 import productos.Laberinto;
 
 /**
@@ -20,7 +21,7 @@ public class Cliente {
      */
     public static void main(final String[] args) {
         try {
-            JuegoLabFactory juegoLab;
+            Builder builderLab;
 
             BufferedReader read = new BufferedReader(
                     new InputStreamReader(System.in));
@@ -31,14 +32,16 @@ public class Cliente {
             System.out.print("\nIntroduzca el numero del juego deseado: ");
             char c = read.readLine().charAt(0);
             switch (c) {
-            case '1': juegoLab = new JuegoMarioLabFactory();
+            case '1': builderLab = new JuegoMarioLabBuilder();
                 break;
-            case '2': juegoLab = new JuegoPokemonLabFactory();
+            case '2': builderLab = new JuegoPokemonLabBuilder();
                 break;
             default: throw new Exception("Numero incorrecto.");
             }
 
-            Laberinto lab = juegoLab.crearLab();
+            Director dir = new Director(builderLab);
+            dir.crearLaberinto();
+            Laberinto lab = builderLab.getLab();
             lab.play();
 
         } catch (Exception e) {

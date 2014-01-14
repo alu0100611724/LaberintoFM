@@ -1,6 +1,6 @@
 JUEGO DEL LABERINTO
 
-Version 2.1.1 - Abstract Factory Method (Crea un laberinto Pokemon y Mario Bros.)
+Version 3.0.2 - Patron Builder
 Este programa es un juego diseñado para la clase de Diseño de Patrones Arquitectónicos.
 Para su implementacion se utilizan las siguientes herramientas:
 
