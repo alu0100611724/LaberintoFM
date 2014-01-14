@@ -33,8 +33,8 @@ public class HabitacionTest {
     public static void setUpBeforeClass() throws Exception {
         h1 = new Habitacion(TAM);
         h2 = new Habitacion(TAM);
-        h1.addPuertas(4);
-        h2.addPuertas(4);
+        h1.addPuertas();
+        h2.addPuertas();
     }
 
     /**

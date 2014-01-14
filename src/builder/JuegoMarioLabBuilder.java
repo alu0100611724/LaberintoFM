@@ -45,10 +45,14 @@ public class JuegoMarioLabBuilder extends Builder {
      * @param size Tamano de la habitacion (cuadrada).
      * @param nMonstruos Numero de monstruos.
      * @param nHabs Numero de habitaciones a crear.
+     * @throws IllegalArgumentException Numero de monstruos no valido.
      */
     public final void fabricarHab(final int size, final int nMonstruos,
-                                  final int nHabs) {
-
+                       final int nHabs) throws IllegalArgumentException {
+        if (nMonstruos < 0) {
+            throw new IllegalArgumentException("El numero de monstruos debe "
+                    + "ser un numero positivo.");
+        }
         MarioHab hab = new MarioHab(size);
         hab.addPuertas();
         if (cont == (nHabs - 1)) {
