@@ -1,6 +1,6 @@
 JUEGO DEL LABERINTO
 
-Version 2.1.0 - Factory Method (Crea un laberinto Pokemon).
+Version 2.1.1 - Factory Method (Crea un laberinto Pokemon y Mario Bros.)
 Este programa es un juego diseñado para la clase de Diseño de Patrones Arquitectónicos.
 Para su implementacion se utilizan las siguientes herramientas:
 

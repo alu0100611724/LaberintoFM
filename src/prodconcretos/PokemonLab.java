@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import productos.Laberinto;
 
 /**
+ * Clase Laberinto Pokemon.
  * @author Mauri
  *
  */
@@ -53,6 +54,6 @@ public class PokemonLab extends Laberinto {
         for (int j = 0; j < SCREEN; j++) {
             System.out.println();
         }
-        System.out.println("\nFelicideades! Ya eres todo un maestro Pokemon.");
+        System.out.println("\n¡Felicidades! Ya eres todo un maestro Pokemon.");
     }
 }

@@ -14,12 +14,24 @@ import productos.Puerta;
  */
 public class PokemonHab extends Habitacion {
 
+    /**
+     * Contador de Pokemons.
+     */
     private static int pokemonCont = 0;
 
-    public PokemonHab(int size) {
+    /**
+     * Constructor.
+     * @param size Tamano de la habitacion (cuadrada).
+     */
+    public PokemonHab(final int size) {
         super(size);
     }
 
+    /**
+     * Agregar Personaje.
+     * Si se agrega un pokemon, se incrementa el contador.
+     * @param Personaje.
+     */
     @Override
     public final void addPersonaje(final Personaje p) {
         NumAleatorio n = new NumAleatorio(tam - 1);
@@ -39,12 +51,14 @@ public class PokemonHab extends Habitacion {
     }
 
     /**
-     * 
-     * @param dir
-     * @return
+     * Metodo Play.
+     * Establece las reglas del juego.
+     * @param dir Direccion a la que se desea mover.
+     * @return -1 => misma habitacion, -2 => You Win y en
+     * otro caso el id de la nueva habitacionActual.
      */
     @Override
-    public final int play(char dir) {
+    public final int play(final char dir) {
 
         //Mover HEROE
         Personaje heroe = personajes.get(personajes.size() - 1);
