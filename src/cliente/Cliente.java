@@ -3,9 +3,9 @@ package cliente;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-import fabricas.JuegoLabFactory;
-import fabricas.JuegoMarioLabFactory;
-import fabricas.JuegoPokemonLabFactory;
+import builder.Builder;
+import builder.JuegoMarioLabBuilder;
+import builder.JuegoPokemonLabFactory;
 import productos.Laberinto;
 
 /**
@@ -20,7 +20,7 @@ public class Cliente {
      */
     public static void main(final String[] args) {
         try {
-            JuegoLabFactory juegoLab;
+            Builder juegoLab;
 
             BufferedReader read = new BufferedReader(
                     new InputStreamReader(System.in));
@@ -31,7 +31,7 @@ public class Cliente {
             System.out.print("\nIntroduzca el numero del juego deseado: ");
             char c = read.readLine().charAt(0);
             switch (c) {
-            case '1': juegoLab = new JuegoMarioLabFactory();
+            case '1': juegoLab = new JuegoMarioLabBuilder();
                 break;
             case '2': juegoLab = new JuegoPokemonLabFactory();
                 break;

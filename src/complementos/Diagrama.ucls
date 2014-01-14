@@ -127,8 +127,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="fabricas.JuegoLabFactory" project="LaberintoFM" 
-    file="/LaberintoFM/src/fabricas/JuegoLabFactory.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="15" language="java" name="builder.JuegoLabFactory" project="LaberintoFM" 
+    file="/LaberintoFM/src/builder/JuegoLabFactory.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="741" y="392"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -190,8 +190,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="22" language="java" name="fabricas.JuegoPokemonLabFactory" project="LaberintoFM" 
-    file="/LaberintoFM/src/fabricas/JuegoPokemonLabFactory.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="22" language="java" name="builder.JuegoPokemonLabFactory" project="LaberintoFM" 
+    file="/LaberintoFM/src/builder/JuegoPokemonLabFactory.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="956" y="330"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -199,8 +199,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="23" language="java" name="fabricas.JuegoMarioLabFactory" project="LaberintoFM" 
-    file="/LaberintoFM/src/fabricas/JuegoMarioLabFactory.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="23" language="java" name="builder.JuegoMarioLabFactory" project="LaberintoFM" 
+    file="/LaberintoFM/src/builder/JuegoMarioLabFactory.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="953" y="505"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      

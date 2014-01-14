@@ -1,25 +1,27 @@
 
-package fabricas;
+package builder;
 
-import prodconcretos.Pokemon;
-import prodconcretos.PokemonHab;
-import prodconcretos.PokemonLab;
+import prodconcretos.Koopa;
+import prodconcretos.MarioHab;
+import prodconcretos.MarioLab;
 import productos.Habitacion;
+import productos.Heroe;
 import productos.Laberinto;
 import productos.Monstruo;
+import productos.Personaje;
 
 /**
  * @author Mauri
  *
  */
-public class JuegoPokemonLabFactory extends JuegoLabFactory {
+public class JuegoMarioLabBuilder extends Builder {
 
     /**
      * Fabrica el Laberinto (Producto).
      * @return El Laberinto.
      */
-    private Laberinto fabricarLab() {
-        return new PokemonLab();
+    public final Laberinto fabricarLab() {
+        return new MarioLab();
     }
 
     /**
@@ -27,16 +29,33 @@ public class JuegoPokemonLabFactory extends JuegoLabFactory {
      * @param size Tamano de la habitacion (cuadrada).
      * @return La Habitacion.
      */
-    private Habitacion fabricarHab(final int size) {
-        return new PokemonHab(size);
+    public final Habitacion fabricarHab(final int size) {
+        return new MarioHab(size);
     }
 
     /**
      * Fabrica el Monstruo.
      * @return El Nonstruo.
      */
-    private Monstruo fabricarMonstruo() {
-        return new Pokemon();
+    public final Monstruo fabricarMonstruo() {
+        return new Koopa();
+    }
+
+    /**
+     * Fabrica un Heroe.
+     * @return EL Heroe.
+     */
+    @Override
+    public final Heroe fabricarHeroe() {
+        return new Heroe();
+    }
+
+    /**
+     * Fabrica a la Princesa Peach.
+     * @return El Nonstruo.
+     */
+    private Personaje fabricarPeach() {
+        return new Personaje();
     }
 
     /**
@@ -51,7 +70,7 @@ public class JuegoPokemonLabFactory extends JuegoLabFactory {
         /* Fabricamos la Habitacion 1.
          * De tamano 5, con 1 monstruo y 1 Heroe
          */
-        PokemonHab h1 = (PokemonHab) fabricarHab(5);
+        MarioHab h1 = (MarioHab) fabricarHab(6);
         h1.addPuertas(1);
         h1.addPersonaje(fabricarMonstruo());
         // El Heroe siempre se debe agregar al final
@@ -60,7 +79,7 @@ public class JuegoPokemonLabFactory extends JuegoLabFactory {
         /* Fabricamos la Habitacion 2.
          * De tamano 10, con 3 monstruos y 1 Heroe
          */
-        PokemonHab h2 = (PokemonHab) fabricarHab(10);
+        MarioHab h2 = (MarioHab) fabricarHab(10);
         h2.addPuertas(2);
         h2.addPersonaje(fabricarMonstruo());
         h2.addPersonaje(fabricarMonstruo());
@@ -70,8 +89,9 @@ public class JuegoPokemonLabFactory extends JuegoLabFactory {
         /* Fabricamos la Habitacion 3.
          * De tamano 8, con 2 monstruos y 1 Heroe
          */
-        PokemonHab h3 = (PokemonHab) fabricarHab(7);
+        MarioHab h3 = (MarioHab) fabricarHab(7);
         h3.addPuertas(1);
+        h3.addPersonaje(fabricarPeach());
         h3.addPersonaje(fabricarMonstruo());
         h3.addPersonaje(fabricarMonstruo());
         h3.addPersonaje(fabricarHeroe());
@@ -90,9 +110,10 @@ public class JuegoPokemonLabFactory extends JuegoLabFactory {
         lab.conectarHabitaciones(1, 2, 2, 1);
 
         // Establecemos la Habitacion actual (La que se pinta).
-        lab.setHabActual(1);
+        lab.setHabActual(0);
 
         // Por ultimo retornamos el laberinto listo para jugar.
         return lab;
     }
+
 }
