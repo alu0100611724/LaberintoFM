@@ -84,7 +84,7 @@
   </class>  
   <class id="10" language="java" name="complementos.NumAleatorio" project="LaberintoFM" 
     file="/LaberintoFM/src/complementos/NumAleatorio.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="744" y="576"/>    
+    <position height="-1" width="-1" x="800" y="768"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -127,16 +127,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="builder.JuegoLabFactory" project="LaberintoFM" 
-    file="/LaberintoFM/src/builder/JuegoLabFactory.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="741" y="392"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="16" language="java" name="prodconcretos.Pokemon" project="LaberintoFM" 
+  <class id="15" language="java" name="prodconcretos.Pokemon" project="LaberintoFM" 
     file="/LaberintoFM/src/prodconcretos/Pokemon.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="478" y="670"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -145,7 +136,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="prodconcretos.Koopa" project="LaberintoFM" 
+  <class id="16" language="java" name="prodconcretos.Koopa" project="LaberintoFM" 
     file="/LaberintoFM/src/prodconcretos/Koopa.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="583" y="667"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -154,16 +145,16 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="prodconcretos.PokemonHab" project="LaberintoFM" 
+  <class id="17" language="java" name="prodconcretos.PokemonHab" project="LaberintoFM" 
     file="/LaberintoFM/src/prodconcretos/PokemonHab.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="341" y="-117"/>    
+    <position height="-1" width="-1" x="313" y="-121"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="19" language="java" name="prodconcretos.MarioHab" project="LaberintoFM" 
+  <class id="18" language="java" name="prodconcretos.MarioHab" project="LaberintoFM" 
     file="/LaberintoFM/src/prodconcretos/MarioHab.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="512" y="-119"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -172,7 +163,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="20" language="java" name="prodconcretos.MarioLab" project="LaberintoFM" 
+  <class id="19" language="java" name="prodconcretos.MarioLab" project="LaberintoFM" 
     file="/LaberintoFM/src/prodconcretos/MarioLab.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="676" y="-107"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -181,7 +172,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="21" language="java" name="prodconcretos.PokemonLab" project="LaberintoFM" 
+  <class id="20" language="java" name="prodconcretos.PokemonLab" project="LaberintoFM" 
     file="/LaberintoFM/src/prodconcretos/PokemonLab.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="808" y="-107"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -190,136 +181,162 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="22" language="java" name="builder.JuegoPokemonLabFactory" project="LaberintoFM" 
-    file="/LaberintoFM/src/builder/JuegoPokemonLabFactory.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="956" y="330"/>    
+  <class id="21" language="java" name="builder.Builder" project="LaberintoFM" 
+    file="/LaberintoFM/src/builder/Builder.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="727" y="339"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="23" language="java" name="builder.JuegoMarioLabFactory" project="LaberintoFM" 
-    file="/LaberintoFM/src/builder/JuegoMarioLabFactory.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="953" y="505"/>    
+  <class id="22" language="java" name="builder.Director" project="LaberintoFM" 
+    file="/LaberintoFM/src/builder/Director.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="744" y="559"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <generalization id="24">    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="5"/>  
-  </generalization>  
+  <class id="23" language="java" name="builder.JuegoMarioLabBuilder" project="LaberintoFM" 
+    file="/LaberintoFM/src/builder/JuegoMarioLabBuilder.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="966" y="261"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="builder.JuegoPokemonLabBuilder" project="LaberintoFM" 
+    file="/LaberintoFM/src/builder/JuegoPokemonLabBuilder.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="942" y="470"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
   <generalization id="25">    
-    <end type="SOURCE" refId="23"/>    
-    <end type="TARGET" refId="15"/>  
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="21"/>  
   </generalization>  
-  <generalization id="26">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <dependency id="27">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="4"/>  
-  </dependency>  
-  <dependency id="28">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="8"/>  
-  </dependency>  
-  <association id="29">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="30" name="habitaciones"/>      
-      <multiplicity id="31" minimum="0" maximum="2147483647"/>    
+  <association id="26">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="27" name="lab"/>      
+      <multiplicity id="28" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="32">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <generalization id="33">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <realization id="34">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="11"/>  
-  </realization>  
-  <generalization id="35">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="4"/>  
-  </generalization>  
-  <generalization id="36">    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <generalization id="37">    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="4"/>  
-  </generalization>  
-  <dependency id="38">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="5"/>  
-  </dependency>  
-  <generalization id="39">    
-    <end type="SOURCE" refId="21"/>    
-    <end type="TARGET" refId="5"/>  
-  </generalization>  
-  <realization id="40">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="11"/>  
-  </realization>  
-  <association id="41">    
+  <association id="29">    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="42" name="pos"/>      
-      <multiplicity id="43" minimum="0" maximum="1"/>    
+      <attribute id="30" name="pos"/>      
+      <multiplicity id="31" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="44">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="6"/>  
+  <generalization id="32">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="4"/>  
   </generalization>  
-  <association id="45">    
+  <association id="33">    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="46" name="c"/>      
-      <multiplicity id="47" minimum="0" maximum="1"/>    
+      <attribute id="34" name="c"/>      
+      <multiplicity id="35" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="48">    
+  <generalization id="36">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <generalization id="37">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <generalization id="38">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <dependency id="49">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="7"/>  
-  </dependency>  
-  <generalization id="50">    
+  <association id="39">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="40" name="builder"/>      
+      <multiplicity id="41" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="42">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="43" name="lab"/>      
+      <multiplicity id="44" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="45">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <realization id="46">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <generalization id="47">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <generalization id="48">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <association id="51">    
+  <association id="49">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="52" name="tablero"/>      
-      <multiplicity id="53" minimum="0" maximum="2147483647"/>    
+      <attribute id="50" name="tablero"/>      
+      <multiplicity id="51" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="54">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="15"/>  
-  </generalization>  
-  <realization id="55">    
+  <realization id="52">    
     <end type="SOURCE" refId="13"/>    
     <end type="TARGET" refId="11"/>  
   </realization>  
+  <realization id="53">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <generalization id="54">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <generalization id="55">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <generalization id="56">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="21"/>  
+  </generalization>  
+  <generalization id="57">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <generalization id="58">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <association id="59">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="60" name="habitaciones"/>      
+      <multiplicity id="61" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

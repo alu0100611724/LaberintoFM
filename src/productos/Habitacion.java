@@ -110,28 +110,13 @@ public class Habitacion {
     }
 
     /**
-     * Agrega n puertas a la habitacion.
-     * @param n numero de pueras. Maximo 4 puertas por habitacion.
-     * @exception IllegalArgumentException Cada habitacion debe
-     * tener entre 1 y 4 puertas.
+     * Agrega 4 puertas a la habitacion.
      */
-    public void addPuertas(final int n) throws IllegalArgumentException {
-        if ((n > MAX_PUERTAS) || (n <= 0)) {
-            throw new IllegalArgumentException("Cada habitacion tiene como "
-                    + "como min 1 puerta y 4 como maximo.");
-        }
-        switch (n) {
-            case 4:
-                tablero[tam / 2][tam - 1] = new Puerta();
-            case 3:
-                tablero[tam / 2][0] = new Puerta();
-            case 2:
-                tablero[tam - 1][tam / 2] = new Puerta();
-            case 1:
-                tablero[0][tam / 2] = new Puerta();
-            default:
-            break;
-        }
+    public final void addPuertas() {
+        tablero[tam / 2][tam - 1] = new Puerta();
+        tablero[tam / 2][0] = new Puerta();
+        tablero[tam - 1][tam / 2] = new Puerta();
+        tablero[0][tam / 2] = new Puerta();
     }
 
     /**

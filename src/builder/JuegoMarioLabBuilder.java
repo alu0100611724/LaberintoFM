@@ -4,116 +4,81 @@ package builder;
 import prodconcretos.Koopa;
 import prodconcretos.MarioHab;
 import prodconcretos.MarioLab;
-import productos.Habitacion;
 import productos.Heroe;
 import productos.Laberinto;
-import productos.Monstruo;
 import productos.Personaje;
 
 /**
+ * Juego Laberinto Mario Bros. Builder.
  * @author Mauri
  *
  */
 public class JuegoMarioLabBuilder extends Builder {
 
     /**
+     * Contador de Habitaciones en el laberinto.
+     */
+    private int cont = 0;
+
+    /**
+     * Laberinto (producto).
+     */
+    private Laberinto lab;
+
+    /**
+     * Constructor.
+     */
+    public JuegoMarioLabBuilder() {
+        lab = new MarioLab();
+    }
+
+    /**
      * Fabrica el Laberinto (Producto).
      * @return El Laberinto.
      */
-    public final Laberinto fabricarLab() {
-        return new MarioLab();
-    }
-
-    /**
-     * Fabrica la Habitacion.
-     * @param size Tamano de la habitacion (cuadrada).
-     * @return La Habitacion.
-     */
-    public final Habitacion fabricarHab(final int size) {
-        return new MarioHab(size);
-    }
-
-    /**
-     * Fabrica el Monstruo.
-     * @return El Nonstruo.
-     */
-    public final Monstruo fabricarMonstruo() {
-        return new Koopa();
-    }
-
-    /**
-     * Fabrica un Heroe.
-     * @return EL Heroe.
-     */
-    @Override
-    public final Heroe fabricarHeroe() {
-        return new Heroe();
-    }
-
-    /**
-     * Fabrica a la Princesa Peach.
-     * @return El Nonstruo.
-     */
-    private Personaje fabricarPeach() {
-        return new Personaje();
-    }
-
-    /**
-     * Cronstruye el Laberinto en el que juegar.
-     * @return El Laberinto.
-     */
-    public final Laberinto crearLab() {
-
-        // Fabricamos el laberinto
-        Laberinto lab = fabricarLab();
-
-        /* Fabricamos la Habitacion 1.
-         * De tamano 5, con 1 monstruo y 1 Heroe
-         */
-        MarioHab h1 = (MarioHab) fabricarHab(6);
-        h1.addPuertas(1);
-        h1.addPersonaje(fabricarMonstruo());
-        // El Heroe siempre se debe agregar al final
-        h1.addPersonaje(fabricarHeroe());
-
-        /* Fabricamos la Habitacion 2.
-         * De tamano 10, con 3 monstruos y 1 Heroe
-         */
-        MarioHab h2 = (MarioHab) fabricarHab(10);
-        h2.addPuertas(2);
-        h2.addPersonaje(fabricarMonstruo());
-        h2.addPersonaje(fabricarMonstruo());
-        h2.addPersonaje(fabricarMonstruo());
-        h2.addPersonaje(fabricarHeroe());
-
-        /* Fabricamos la Habitacion 3.
-         * De tamano 8, con 2 monstruos y 1 Heroe
-         */
-        MarioHab h3 = (MarioHab) fabricarHab(7);
-        h3.addPuertas(1);
-        h3.addPersonaje(fabricarPeach());
-        h3.addPersonaje(fabricarMonstruo());
-        h3.addPersonaje(fabricarMonstruo());
-        h3.addPersonaje(fabricarHeroe());
-
-        // Agregamos las habitaciones al laberinto
-        lab.addHab(h1);
-        lab.addHab(h2);
-        lab.addHab(h3);
-
-        /* Conectamos las habitaciones indicando_
-         * Puerta Origen, Hab Origen, Puerta Destino, Hab Destino.
-         * Las Habitaciones estan en un array por lo que la hab1 es en
-         * realidad la 0.
-         */
-        lab.conectarHabitaciones(1, 0, 1, 1);
-        lab.conectarHabitaciones(1, 2, 2, 1);
-
-        // Establecemos la Habitacion actual (La que se pinta).
-        lab.setHabActual(0);
-
-        // Por ultimo retornamos el laberinto listo para jugar.
+    public final Laberinto getLab() {
         return lab;
     }
 
+    /**
+     * Fabrica la Habitacion con todos sus elementos.
+     * @param size Tamano de la habitacion (cuadrada).
+     * @param nMonstruos Numero de monstruos.
+     * @param nHabs Numero de habitaciones a crear.
+     */
+    public final void fabricarHab(final int size, final int nMonstruos,
+                                  final int nHabs) {
+
+        MarioHab hab = new MarioHab(size);
+        hab.addPuertas();
+        if (cont == (nHabs - 1)) {
+            hab.addPersonaje(new Personaje());
+        }
+        cont++;
+        for (int i = 0; i < nMonstruos; i++) {
+            hab.addPersonaje(new Koopa());
+        }
+        hab.addPersonaje(new Heroe());
+        lab.addHab(hab);
+    }
+
+    /**
+     * Conecta 2 habitaciones del laberinto.
+     * @param pO Puerta de Origen.
+     * @param hO Habitacion de Origen.
+     * @param pD Puerta de Destino.
+     * @param hD Puerta de Destino.
+     */
+    public final void conectar(final int pO, final int hO,
+                               final int pD, final int hD) {
+        lab.conectarHabitaciones(pO, hO, pD, hD);
+    }
+
+    /**
+     * Selecciona la habitacion actaul.
+     * @param i Id de la Habitacio.
+     */
+    public final void setHabActual(final int i) {
+        lab.setHabActual(i);
+    }
 }

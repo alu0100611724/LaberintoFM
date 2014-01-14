@@ -1,10 +1,7 @@
 
 package builder;
 
-import productos.Habitacion;
-import productos.Heroe;
 import productos.Laberinto;
-import productos.Monstruo;
 
 /**
  * Interfaz Builder para construir laberintos.
@@ -17,30 +14,31 @@ public abstract class Builder {
      * Fabrica el Laberinto (Producto).
      * @return El Laberinto.
      */
-    public abstract Laberinto fabricarLab();
+    public abstract Laberinto getLab();
 
     /**
-     * Fabrica la Habitacion.
+     * Fabrica la Habitacion con todos sus elementos.
      * @param size Tamano de la habitacion (cuadrada).
-     * @return La Habitacion.
+     * @param nMonstruos Numero de monstruos.
+     * @param nHabs Numero de habitaciones a crear.
      */
-    public abstract Habitacion fabricarHab(final int size);
+    public abstract void fabricarHab(final int size, final int nMonstruos,
+                                     final int nHabs);
 
     /**
-     * Fabrica el Heroe.
-     * @return El Heroe.
+     * Conecta 2 habitaciones del laberinto.
+     * @param pO Puerta de Origen.
+     * @param hO Habitacion de Origen.
+     * @param pD Puerta de Destino.
+     * @param hD Puerta de Destino.
      */
-    public abstract Heroe fabricarHeroe();
+    public abstract void conectar(final int pO, final int hO,
+                                  final int pD, final int hD);
 
     /**
-     * Fabrica el Monstruo.
-     * @return El Nonstruo.
+     * Selecciona la habitacion actaul.
+     * @param i Id de la Habitacio.
      */
-    public abstract Monstruo fabricarMonstruo();
+    public abstract void setHabActual(final int i);
 
-    /**
-     * Cronstruye el Laberinto en el que juegar.
-     * @return El Laberinto.
-     */
-    public abstract Laberinto crearLab();
 }
