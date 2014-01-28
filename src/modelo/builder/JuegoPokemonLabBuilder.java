@@ -43,9 +43,9 @@ public class JuegoPokemonLabBuilder extends Builder {
      */
     public final void fabricarHab(final int size, final int nMonstruos,
                        final int nHabs) throws IllegalArgumentException {
-        if (nMonstruos < 0) {
+        if (nMonstruos < 0 || (nMonstruos > size - 2)) {
             throw new IllegalArgumentException("El numero de monstruos debe "
-                    + "ser un numero positivo.");
+                    + "ser un numero positivo y menor que el tam Habitacion.");
         }
         PokemonHab hab = new PokemonHab(size);
         hab.addPuertas();
