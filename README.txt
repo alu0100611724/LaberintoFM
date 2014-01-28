@@ -1,6 +1,6 @@
 JUEGO DEL LABERINTO
 
-Version 3.0.3 - Builder
+Version 3.0.3 - Builder (Fixed bugs)
 Este programa es un juego diseñado para la clase de Diseño de Patrones Arquitectónicos.
 Para su implementacion se utilizan las siguientes herramientas:
 
