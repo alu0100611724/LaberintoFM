@@ -2,6 +2,7 @@ package modelo.productos;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -9,7 +10,12 @@ import java.util.ArrayList;
  * @author Mauri
  *
  */
-public class Laberinto {
+public class Laberinto implements Serializable {
+
+    /**
+     * Id. Serializable.
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * El laberinto esta formado por habitaciones.

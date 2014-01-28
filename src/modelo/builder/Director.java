@@ -4,7 +4,10 @@ package modelo.builder;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
+import modelo.complementos.Fichero;
 import modelo.productos.Habitacion;
 import modelo.productos.Laberinto;
 import modelo.productos.concretos.PokemonHab;
@@ -100,5 +103,30 @@ public class Director {
         } while (sIn.readLine().equalsIgnoreCase("s"));
 
         builder.setHabActual(0);
+    }
+
+    /**
+     * Guarda el laberinto creado o la partida que se esta jugando.
+     * @throws IOException Error de lectura de fichero.
+     */
+    public final void guardarLab() throws IOException {
+        Fichero fichero = new Fichero();
+        ObjectOutputStream oos = fichero.escritura();
+        oos.writeObject(builder.getLab());
+    }
+
+    /**
+     * Carga el laberinto creado o la partida que se estaba jugando.
+     * @throws IOException Error de lectura de fichero.
+     * @throws ClassNotFoundException Error de clase.
+     * @return Laberinto.
+     */
+    public final Laberinto cargarLab() throws IOException,
+        ClassNotFoundException {
+
+        Fichero fichero = new Fichero();
+        ObjectInputStream ois = fichero.lectura();
+
+        return ((Laberinto) ois.readObject());
     }
 }

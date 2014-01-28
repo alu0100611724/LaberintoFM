@@ -1,11 +1,18 @@
 package modelo.productos;
 
+import java.io.Serializable;
+
 /**
  * Esta es la clase padre de todos los elementos pertenecientes a la habitacion.
  * @author Mauri
  *
  */
-public class LugarHab {
+public class LugarHab implements Serializable {
+
+    /**
+     * Id serializable.
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * Caracter con el que se mostrara el elemento de la habitacion.

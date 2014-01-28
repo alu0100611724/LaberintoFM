@@ -1,12 +1,19 @@
 
 package modelo.complementos;
 
+import java.io.Serializable;
+
 /**
  * Indica posicion de un elemento dentro de la habitacion.
  * @author Mauri
  *
  */
-public class Posicion {
+public class Posicion implements Serializable {
+
+    /**
+     * Id. Serializable.
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * Fila.

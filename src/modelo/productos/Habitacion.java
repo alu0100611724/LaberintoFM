@@ -1,5 +1,6 @@
 package modelo.productos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import modelo.complementos.NumAleatorio;
@@ -10,7 +11,12 @@ import modelo.complementos.Posicion;
  * @author Mauri
  *
  */
-public class Habitacion {
+public class Habitacion implements Serializable {
+
+    /**
+     * Id serializable.
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * Tamano minimo de las habitaciones.

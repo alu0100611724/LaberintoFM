@@ -1,6 +1,7 @@
-builder
 cliente
-complementos
-estrategias
-prodconcretos
+modelo.builder
+modelo.complementos
+modelo.estrategias
+modelo.productos
+modelo.productos.concretos
 productos

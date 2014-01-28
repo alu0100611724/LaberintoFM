@@ -32,7 +32,8 @@ public class Cliente {
         System.out.println("\nJuegos de Laberintos:");
         System.out.println("\n1. Mario Bros.");
         System.out.println("2. Pokemon.");
-        System.out.println("3. Salir.");
+        System.out.println("3. Cargar.");
+        System.out.println("4. Salir.");
         System.out.print("\nIntroduzca el numero del juego deseado: ");
         char c = read.readLine().charAt(0);
         switch (c) {
@@ -40,14 +41,25 @@ public class Cliente {
             break;
         case '2': builderLab = new JuegoPokemonLabBuilder();
             break;
-        case '3': System.out.println("Bye.");
+        case '3': // Cargar laberinto.
+        break;
+        case '4': System.out.println("Bye.");
             break;
         default: throw new Exception("Numero incorrecto.");
         }
-        if (c != '3') {
+        if (c != '4') {
+            Laberinto lab;
             Director dir = new Director(builderLab);
-            dir.crearLaberinto();
-            Laberinto lab = builderLab.getLab();
+            if (c == '3') {
+                lab = dir.cargarLab();
+            } else {
+                dir.crearLaberinto();
+                lab = builderLab.getLab();
+                System.out.print("\nDeseea guardar el laberinto (s/n): ");
+                if (read.readLine().equalsIgnoreCase("s")) {
+                    dir.guardarLab();
+                }
+            }
             lab.play();
         }
     }

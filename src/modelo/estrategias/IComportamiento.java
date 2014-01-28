@@ -3,6 +3,8 @@
  */
 package modelo.estrategias;
 
+import java.io.Serializable;
+
 import modelo.complementos.Posicion;
 
 /**
@@ -11,7 +13,7 @@ import modelo.complementos.Posicion;
  * @author Mauri
  *
  */
-public interface IComportamiento {
+public interface IComportamiento extends Serializable {
 
     /**
      * Describe los movimientos del personaje segun su estado.

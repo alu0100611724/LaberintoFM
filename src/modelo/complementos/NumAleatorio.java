@@ -1,6 +1,7 @@
 
 package modelo.complementos;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Random;
 
@@ -9,7 +10,12 @@ import java.util.Random;
  * @author Mauri
  *
  */
-public class NumAleatorio {
+public class NumAleatorio implements Serializable {
+
+    /**
+     * Id. Serializable.
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * Atributo de la clase Random.
