@@ -1,6 +1,6 @@
 JUEGO DEL LABERINTO
 
-Version 3.0.2 - Patron Builder
+Version 3.0.3 - Builder
 Este programa es un juego diseñado para la clase de Diseño de Patrones Arquitectónicos.
 Para su implementacion se utilizan las siguientes herramientas:
 
@@ -8,6 +8,7 @@ Para su implementacion se utilizan las siguientes herramientas:
 * Patrones de Diseño.
 * Javadoc.
 * JUnit.
+* Control de Excepciones.
 * Checkstyle.
 * PMD.
 * FindBugs.

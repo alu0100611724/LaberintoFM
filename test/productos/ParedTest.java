@@ -4,6 +4,7 @@
 package productos;
 
 import static org.junit.Assert.*;
+import modelo.productos.Pared;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -59,7 +60,7 @@ public class ParedTest {
     }
 
     /**
-     * Test method for {@link productos.LugarHab#getImagen()}.
+     * Test method for {@link modelo.productos.LugarHab#getImagen()}.
      */
     @Test
     public final void testGetImagen() {
@@ -67,7 +68,7 @@ public class ParedTest {
     }
 
     /**
-     * Test method for {@link productos.LugarHab#setImagen(char)}.
+     * Test method for {@link modelo.productos.LugarHab#setImagen(char)}.
      */
     @Test
     public final void testSetImagen() {
