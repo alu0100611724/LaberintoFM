@@ -1,6 +1,7 @@
 package productos;
 
 import static org.junit.Assert.*;
+import modelo.productos.Puerta;
 
 import org.junit.Before;
 import org.junit.Test;

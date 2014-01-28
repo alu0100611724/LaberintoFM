@@ -3,11 +3,11 @@ package cliente;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-import builder.Builder;
-import builder.Director;
-import builder.JuegoMarioLabBuilder;
-import builder.JuegoPokemonLabBuilder;
-import productos.Laberinto;
+import modelo.builder.Builder;
+import modelo.builder.Director;
+import modelo.builder.JuegoMarioLabBuilder;
+import modelo.builder.JuegoPokemonLabBuilder;
+import modelo.productos.Laberinto;
 
 /**
  * Representa al ciente que utiliza el framework.
