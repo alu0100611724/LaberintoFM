@@ -2,8 +2,9 @@ package vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 
-import javax.swing.*;
 
 /**
  * Ventana Principal de la Aplicacion.
@@ -18,15 +19,18 @@ public class VentanaPrincipal extends JFrame {
     static final int ANCHO_VENT = 235;
     static final int ALTO_VENT = 340;
     static final String TITULO = "MazeMaker";
+    /**
+     * NUmero de espacios definido entre elementos.
+     */
     static final int ANCHO_BORDES = 30;
 
     //----------------------------------------
     // ATRIBUTOS
     //----------------------------------------
-    private JButton botonJugar;
-    private JButton botonCrear;
-    private JButton botonCargar;
-    private JButton botonSalir;
+    private JButton bJugar;
+    private JButton bCrear;
+    private JButton bCargar;
+    private JButton bSalir;
 
     //----------------------------------------
     // GETTERS Y SETTERS
@@ -35,85 +39,109 @@ public class VentanaPrincipal extends JFrame {
      * @return the botonJugar
      */
     public final JButton getBotonJugar() {
-        return botonJugar;
+        return bJugar;
     }
 
     /**
      * @param botonJugar the botonJugar to set
      */
-    public final void setBotonJugar(JButton botonJugar) {
-        this.botonJugar = botonJugar;
+    public final void setBotonJugar(final JButton botonJugar) {
+        this.bJugar = botonJugar;
     }
 
     /**
      * @return the botonCrear
      */
     public final JButton getBotonCrear() {
-        return botonCrear;
+        return bCrear;
     }
 
     /**
      * @param botonCrear the botonCrear to set
      */
-    public final void setBotonCrear(JButton botonCrear) {
-        this.botonCrear = botonCrear;
+    public final void setBotonCrear(final JButton botonCrear) {
+        this.bCrear = botonCrear;
     }
 
     /**
      * @return the botonCargar
      */
     public final JButton getBotonCargar() {
-        return botonCargar;
+        return bCargar;
     }
 
     /**
      * @param botonCargar the botonCargar to set
      */
-    public final void setBotonCargar(JButton botonCargar) {
-        this.botonCargar = botonCargar;
+    public final void setBotonCargar(final JButton botonCargar) {
+        this.bCargar = botonCargar;
     }
 
     /**
      * @return the botonSalir
      */
     public final JButton getBotonSalir() {
-        return botonSalir;
+        return bSalir;
     }
 
     /**
      * @param botonSalir the botonSalir to set
      */
-    public final void setBotonSalir(JButton botonSalir) {
-        this.botonSalir = botonSalir;
+    public final void setBotonSalir(final JButton botonSalir) {
+        this.bSalir = botonSalir;
     }
 
     //----------------------------------------
     // CONSTRUCTORES
     //----------------------------------------
-    public VentanaPrincipal () {
-        super (TITULO);
-        inicializar (ANCHO_VENT, ALTO_VENT);
+    /**
+     * Construye La ventana con los valores por defecto.
+     */
+    public VentanaPrincipal() {
+        super(TITULO);
+        inicializar(ANCHO_VENT, ALTO_VENT);
     }
 
-    public VentanaPrincipal (final int ancho, final int alto) {
-        super (TITULO);
-        inicializar (ancho, alto);
+    /**
+     * Construye la ventana con un alto y ancho determinado.
+     * @param ancho Numero de pixeles de ancho.
+     * @param alto Numero de pixeles de alto.
+     */
+    public VentanaPrincipal(final int ancho, final int alto) {
+        super(TITULO);
+        inicializar(ancho, alto);
     }
-    public VentanaPrincipal (final int ancho, final int alto, final String titulo) {
-        super (titulo);
-        inicializar (ancho, alto);
+    /**
+     * Construya la ventana principal con los valores deseados.
+     * @param ancho Numero de pixeles de ancho.
+     * @param alto Numero de pixeles de alto.
+     * @param titulo Nombre de la ventana.
+     */
+    public VentanaPrincipal(final int ancho, final int alto,
+                            final String titulo) {
+        super(titulo);
+        inicializar(ancho, alto);
     }
 
     //----------------------------------------
     // METODOS PUBLICOS
     //----------------------------------------
-    public static void main(String[] args) {
-        new VentanaPrincipal ();
+    /**
+     * Metodo principal, llamado por defecto que crea la ventana.
+     * @param args Argumentos.
+     */
+    public static void main(final String[] args) {
+        new VentanaPrincipal();
     }
 
     //----------------------------------------
     // METODOS PRIVADOS
     //----------------------------------------
+    /**
+     * Metodo encargado de construir la ventana.
+     * @param ancho Numero de pixeles de ancho.
+     * @param alto Numero de pixeles de alto.
+     */
     private void inicializar (final int ancho, final int alto) {
         setLayout(null);
         setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
@@ -128,21 +156,11 @@ public class VentanaPrincipal extends JFrame {
         getBotonJugar().addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent arg0) {
-               /*
-             getLaVentana_().getLaRefZonaTrabajo_().nuevaVentanaInterna(10, 10, getLaImagenResultado_());
-             getLaVentana_().getLaRefZonaTrabajo_()
-                .getVecVentanas_().lastElement()
-                .getElHistograma_().getElHistograma_()[0] -= getLasHerramientas_().getContadorDeFondo();
-             try {
-               getLaVentana_().getLaRefZonaTrabajo_().getVecVentanas_().lastElement().setSelected(true);
-             } catch (PropertyVetoException e) {
-               e.printStackTrace();
-             }
-             dispose();*/
+             dispose();
            }
          });
         add(getBotonJugar());
-        
+
         setBotonCrear(new JButton("Crear Laberinto"));
         getBotonCrear().setLocation(ANCHO_BORDES + 20, getBotonJugar().getY()
                                 + getBotonJugar().getHeight() + ANCHO_BORDES);
@@ -150,21 +168,11 @@ public class VentanaPrincipal extends JFrame {
         getBotonCrear().addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent arg0) {
-               /*
-             getLaVentana_().getLaRefZonaTrabajo_().nuevaVentanaInterna(10, 10, getLaImagenResultado_());
-             getLaVentana_().getLaRefZonaTrabajo_()
-                .getVecVentanas_().lastElement()
-                .getElHistograma_().getElHistograma_()[0] -= getLasHerramientas_().getContadorDeFondo();
-             try {
-               getLaVentana_().getLaRefZonaTrabajo_().getVecVentanas_().lastElement().setSelected(true);
-             } catch (PropertyVetoException e) {
-               e.printStackTrace();
-             }
-             dispose();*/
+             dispose();
            }
          });
         add(getBotonCrear());
-        
+
         setBotonCargar(new JButton("Cargar Partida"));
         getBotonCargar().setLocation(ANCHO_BORDES + 20, getBotonCrear().getY()
                                 + getBotonCrear().getHeight() + ANCHO_BORDES);
@@ -172,17 +180,7 @@ public class VentanaPrincipal extends JFrame {
         getBotonCargar().addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent arg0) {
-               /*
-             getLaVentana_().getLaRefZonaTrabajo_().nuevaVentanaInterna(10, 10, getLaImagenResultado_());
-             getLaVentana_().getLaRefZonaTrabajo_()
-                .getVecVentanas_().lastElement()
-                .getElHistograma_().getElHistograma_()[0] -= getLasHerramientas_().getContadorDeFondo();
-             try {
-               getLaVentana_().getLaRefZonaTrabajo_().getVecVentanas_().lastElement().setSelected(true);
-             } catch (PropertyVetoException e) {
-               e.printStackTrace();
-             }
-             dispose();*/
+             dispose();
            }
          });
         add(getBotonCargar());
