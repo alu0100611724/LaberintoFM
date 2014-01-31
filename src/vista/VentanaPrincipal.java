@@ -1,9 +1,15 @@
 package vista;
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
 
 
 /**
@@ -16,80 +22,18 @@ public class VentanaPrincipal extends JFrame {
     //----------------------------------------
     // CONSTANTES
     //----------------------------------------
-    static final int ANCHO_VENT = 235;
-    static final int ALTO_VENT = 340;
     static final String TITULO = "MazeMaker";
-    /**
-     * NUmero de espacios definido entre elementos.
-     */
-    static final int ANCHO_BORDES = 30;
+    static final int ANCHO_BORDES = 10;
 
     //----------------------------------------
     // ATRIBUTOS
     //----------------------------------------
-    private JButton bJugar;
+    private JButton bObjetivo;
     private JButton bCrear;
+    private JButton bGuardar;
     private JButton bCargar;
+    private JButton bAbout;
     private JButton bSalir;
-
-    //----------------------------------------
-    // GETTERS Y SETTERS
-    //----------------------------------------
-    /**
-     * @return the botonJugar
-     */
-    public final JButton getBotonJugar() {
-        return bJugar;
-    }
-
-    /**
-     * @param botonJugar the botonJugar to set
-     */
-    public final void setBotonJugar(final JButton botonJugar) {
-        this.bJugar = botonJugar;
-    }
-
-    /**
-     * @return the botonCrear
-     */
-    public final JButton getBotonCrear() {
-        return bCrear;
-    }
-
-    /**
-     * @param botonCrear the botonCrear to set
-     */
-    public final void setBotonCrear(final JButton botonCrear) {
-        this.bCrear = botonCrear;
-    }
-
-    /**
-     * @return the botonCargar
-     */
-    public final JButton getBotonCargar() {
-        return bCargar;
-    }
-
-    /**
-     * @param botonCargar the botonCargar to set
-     */
-    public final void setBotonCargar(final JButton botonCargar) {
-        this.bCargar = botonCargar;
-    }
-
-    /**
-     * @return the botonSalir
-     */
-    public final JButton getBotonSalir() {
-        return bSalir;
-    }
-
-    /**
-     * @param botonSalir the botonSalir to set
-     */
-    public final void setBotonSalir(final JButton botonSalir) {
-        this.bSalir = botonSalir;
-    }
 
     //----------------------------------------
     // CONSTRUCTORES
@@ -99,28 +43,16 @@ public class VentanaPrincipal extends JFrame {
      */
     public VentanaPrincipal() {
         super(TITULO);
-        inicializar(ANCHO_VENT, ALTO_VENT);
+        inicializar();
     }
 
     /**
-     * Construye la ventana con un alto y ancho determinado.
-     * @param ancho Numero de pixeles de ancho.
-     * @param alto Numero de pixeles de alto.
-     */
-    public VentanaPrincipal(final int ancho, final int alto) {
-        super(TITULO);
-        inicializar(ancho, alto);
-    }
-    /**
      * Construya la ventana principal con los valores deseados.
-     * @param ancho Numero de pixeles de ancho.
-     * @param alto Numero de pixeles de alto.
      * @param titulo Nombre de la ventana.
      */
-    public VentanaPrincipal(final int ancho, final int alto,
-                            final String titulo) {
+    public VentanaPrincipal(final String titulo) {
         super(titulo);
-        inicializar(ancho, alto);
+        inicializar();
     }
 
     //----------------------------------------
@@ -139,62 +71,51 @@ public class VentanaPrincipal extends JFrame {
     //----------------------------------------
     /**
      * Metodo encargado de construir la ventana.
-     * @param ancho Numero de pixeles de ancho.
-     * @param alto Numero de pixeles de alto.
      */
-    private void inicializar (final int ancho, final int alto) {
-        setLayout(null);
-        setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-        setSize(ancho, alto + 50);
+    private void inicializar() {
+        setLayout(new BorderLayout(ANCHO_BORDES, ANCHO_BORDES));
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setResizable(false);
-        setVisible (true);
+        setResizable(true);
+        setVisible(true);
 
-        setBotonJugar(new JButton("Modo Historia"));
-        getBotonJugar().setLocation(ANCHO_BORDES + 20, ANCHO_BORDES);
-        getBotonJugar().setSize(130, 50);
-        getBotonJugar().addActionListener(new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent arg0) {
-             dispose();
-           }
-         });
-        add(getBotonJugar());
+        // Panel Botones
+        JPanel pMenu = new JPanel();
+        pMenu.setLayout(new GridLayout(6, 1));
+        pMenu.add(bObjetivo = new JButton("Objetivos"));
+        pMenu.add(bCrear = new JButton("Crear Laberinto"));
+        pMenu.add(bGuardar = new JButton("Guardar"));
+        pMenu.add(bCargar = new JButton("Cargar"));
+        pMenu.add(bAbout = new JButton("About MazeMaker"));
+        pMenu.add(bSalir = new JButton("Salir"));
 
-        setBotonCrear(new JButton("Crear Laberinto"));
-        getBotonCrear().setLocation(ANCHO_BORDES + 20, getBotonJugar().getY()
-                                + getBotonJugar().getHeight() + ANCHO_BORDES);
-        getBotonCrear().setSize(130, 50);
-        getBotonCrear().addActionListener(new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent arg0) {
-             dispose();
-           }
-         });
-        add(getBotonCrear());
+        // Panel Habitacion
+        JPanel pHabitacion = new JPanel();
+        pHabitacion.setLayout(new GridLayout(10, 10, 0, 0)); // cambiar por tamHabitacion
+        pHabitacion.setBorder(new TitledBorder("Mario Bros."));
+        for (int i = 0; i < 100; i++) {
+          pHabitacion.add(new JLabel("" + i)); // Add imagen de cada elemento de la habitacion
+        }
 
-        setBotonCargar(new JButton("Cargar Partida"));
-        getBotonCargar().setLocation(ANCHO_BORDES + 20, getBotonCrear().getY()
-                                + getBotonCrear().getHeight() + ANCHO_BORDES);
-        getBotonCargar().setSize(130, 50);
-        getBotonCargar().addActionListener(new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent arg0) {
-             dispose();
-           }
-         });
-        add(getBotonCargar());
+        // Panel que indica el Estado del juego.
+        JPanel pEstadoJuego = new JPanel();
+        pEstadoJuego.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
+        pEstadoJuego.add(new JLabel("Vidas: ")); // Cambia vidas por pokemons de acuerdo al modo de juego
+        pEstadoJuego.add(new JLabel("X"));
 
-        setBotonSalir(new JButton("Salir"));
-        getBotonSalir().setLocation(ANCHO_BORDES + 20, getBotonCargar().getY()
-                            + getBotonCargar().getHeight() + ANCHO_BORDES);
-        getBotonSalir().setSize(130, 50);
-        getBotonSalir().addActionListener(new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent arg0) {
-             dispose();
-           }
-         });
-        add(getBotonSalir());
+        // Panel que combina la habitacion con el estado del juego
+        JPanel pJuego = new JPanel();
+        pJuego.setLayout(new BorderLayout());
+        pJuego.add(pHabitacion, BorderLayout.CENTER);
+        pJuego.add(pEstadoJuego, BorderLayout.SOUTH);
+
+        // Agregar paneles a la ventana
+        add(pMenu, BorderLayout.WEST);
+        add(pJuego, BorderLayout.CENTER);
+
+        // Ajustar tamano de la ventana al contenido
+        pack();
+
+        // Listeners (Actions & Keys)
     }
 }
