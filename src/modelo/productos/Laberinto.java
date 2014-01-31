@@ -122,4 +122,20 @@ public class Laberinto implements Serializable {
         } while (estado != -2);
         System.out.println("\nGAME OVER");
     }
+
+    /**
+     * @return the habitaciones
+     */
+    public final Habitacion getHabI(int index) {
+        return habitaciones.get(index);
+    }
+
+    /**
+     * @param habitaciones the habitaciones to set
+     */
+    public final void setHabI(int index, Habitacion habitacion) {
+        this.habitaciones.set(index, habitacion);
+    }
+    
+    
 }

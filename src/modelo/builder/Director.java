@@ -6,11 +6,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-
 import modelo.complementos.Fichero;
-import modelo.productos.Habitacion;
 import modelo.productos.Laberinto;
-import modelo.productos.concretos.PokemonHab;
 
 /**
  * Clase Director.
@@ -128,5 +125,120 @@ public class Director {
         ObjectInputStream ois = fichero.lectura();
 
         return ((Laberinto) ois.readObject());
+    }
+
+    // -------------------------
+    // GETTERS Y SETTERS
+    // -------------------------
+    /**
+     * @return the numHab
+     */
+    public final int getNumHabs() {
+        return numHab;
+    }
+
+    /**
+     * @param numHabs the numHab to set
+     */
+    public final void setNumHabs(final int numHabs) {
+        this.numHab = numHabs;
+    }
+
+    /**
+     * @return the tamHab
+     */
+    public final int getTamHab() {
+        return tamHab;
+    }
+
+    /**
+     * @param tamHabitacion the tamHab to set
+     */
+    public final void setTamHab(final int tamHabitacion) {
+        this.tamHab = tamHabitacion;
+    }
+
+    /**
+     * @return the numMonstruos
+     */
+    public final int getNumMonstruos() {
+        return numMonstruos;
+    }
+
+    /**
+     * @param numMonstruosHab the numMonstruos to set
+     */
+    public final void setNumMonstruos(final int numMonstruosHab) {
+        this.numMonstruos = numMonstruosHab;
+    }
+
+    /**
+     * @return the pOrigin
+     */
+    public final int getPuertaOrigin() {
+        return pOrigin;
+    }
+
+    /**
+     * @param puertaOrigin the pOrigin to set
+     */
+    public final void setPuertaOrigin(final int puertaOrigin) {
+        this.pOrigin = puertaOrigin;
+    }
+
+    /**
+     * @return the pDest
+     */
+    public final int getPuertaDest() {
+        return pDest;
+    }
+
+    /**
+     * @param puertaDest the pDest to set
+     */
+    public final void setPuertaDest(final int puertaDest) {
+        this.pDest = puertaDest;
+    }
+
+    /**
+     * @return the hOrigin
+     */
+    public final int getHabOrigin() {
+        return hOrigin;
+    }
+
+    /**
+     * @param habOrigin the hOrigin to set
+     */
+    public final void setHabOrigin(final int habOrigin) {
+        this.hOrigin = habOrigin;
+    }
+
+    /**
+     * @return the hDest
+     */
+    public final int getHabDest() {
+        return hDest;
+    }
+
+    /**
+     * @param habDest the hDest to set
+     */
+    public final void setHabDest(final int habDest) {
+        this.hDest = habDest;
+    }
+
+    /**
+     * @return the builder
+     */
+    public final Builder getBuilder() {
+        return builder;
+    }
+
+    /**
+     * @param builder the builder to set
+     */
+    public final void setBuilder(final Builder builder) {
+        this.builder = builder;
     }
 }

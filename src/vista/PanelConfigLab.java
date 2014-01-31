@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -31,7 +32,7 @@ public class PanelConfigLab extends JFrame {
     /**
      * Nombre de la ventana por defecto.
      */
-    static final String TITULO = "Configuracion Laberinto";
+    static final String TITULO = "Maze Settings";
 
 
     //----------------------------------------
@@ -41,24 +42,32 @@ public class PanelConfigLab extends JFrame {
     private JButton bCancelar, bSiguiente;
     private JSlider sNumHabs;
     private JLabel lNumHabs;
+    /**
+     * Ventana Principal
+     */
+    private VentanaPrincipal vp;
 
     //----------------------------------------
     // CONSTRUCTORES
     //----------------------------------------
     /**
-     * Construye La ventana con los valores por defecto.
+     * Construye Panel de Configuracion del Laberinto.
+     * Este constructor es el que se llama desde la Ventana Principal.
+     * @param vPrincipal Recibe la ventana principal.
      */
-    public PanelConfigLab() {
+    public PanelConfigLab(final VentanaPrincipal vPrincipal) {
         super(TITULO);
+        vp = vPrincipal;
         inicializar();
     }
 
     /**
-     * Construya la ventana principal con titulo dado.
-     * @param titulo Nombre de la ventana.
+     * Construye Panel de Configuracion del Laberinto.
+     * Este constructor es utilizado para pruebas de diseño.
      */
-    public PanelConfigLab(final String titulo) {
-        super(titulo);
+    public PanelConfigLab() {
+        super(TITULO);
+        vp = new VentanaPrincipal();
         inicializar();
     }
 
@@ -110,11 +119,11 @@ public class PanelConfigLab extends JFrame {
         // Crea Panel para el slider utilizando BorderLayout
         JPanel p2 = new JPanel();
         p2.setLayout(new BorderLayout(15, 15));
-        sNumHabs = new JSlider(1, 9, 1);
+        sNumHabs = new JSlider(1, 10, 1);
         sNumHabs.setMajorTickSpacing(1);
         sNumHabs.setPaintTicks(true);
         lNumHabs = new JLabel();
-        lNumHabs.setText(String.valueOf(sNumHabs.getValue()));
+        lNumHabs.setText("0" + String.valueOf(sNumHabs.getValue()));
         p2.add(sNumHabs, BorderLayout.CENTER);
         p2.add(lNumHabs, BorderLayout.EAST);
         p2.setBorder(new TitledBorder("Numero de Habitaciones"));
@@ -129,7 +138,12 @@ public class PanelConfigLab extends JFrame {
         sNumHabs.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent arg0) {
-                lNumHabs.setText(String.valueOf(sNumHabs.getValue()));
+                if (sNumHabs.getValue() < 10) {
+                    lNumHabs.setText("0"
+                                + String.valueOf(sNumHabs.getValue()));
+                } else {
+                    lNumHabs.setText(String.valueOf(sNumHabs.getValue()));
+                }
             }
         });
 
@@ -146,7 +160,7 @@ public class PanelConfigLab extends JFrame {
             public void actionPerformed(ActionEvent arg0) {
               /* Si rb Mario creamos laberinto mario con n habitaciones
                * sino creamos laberinto pokemon
-               * llamamos a la siguiente ventana
+               * llamamos a la siguiente ventana pasando como argumento vp
                * cerramos ventana actual
                */
             }

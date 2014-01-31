@@ -5,11 +5,16 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
+
+import modelo.builder.Builder;
+import modelo.builder.Director;
+import modelo.productos.Laberinto;
 
 
 /**
@@ -28,8 +33,12 @@ public class VentanaPrincipal extends JFrame {
     //----------------------------------------
     // ATRIBUTOS
     //----------------------------------------
+    private Builder builder;
+    private Director director;
+    private Laberinto laberinto;
+
     private JButton bObjetivo;
-    private JButton bCrear;
+    private JButton bCambiar;
     private JButton bGuardar;
     private JButton bCargar;
     private JButton bAbout;
@@ -83,7 +92,7 @@ public class VentanaPrincipal extends JFrame {
         JPanel pMenu = new JPanel();
         pMenu.setLayout(new GridLayout(6, 1));
         pMenu.add(bObjetivo = new JButton("Objetivos"));
-        pMenu.add(bCrear = new JButton("Crear Laberinto"));
+        pMenu.add(bCambiar = new JButton("Cambiar Laberinto"));
         pMenu.add(bGuardar = new JButton("Guardar"));
         pMenu.add(bCargar = new JButton("Cargar"));
         pMenu.add(bAbout = new JButton("About MazeMaker"));
@@ -117,5 +126,57 @@ public class VentanaPrincipal extends JFrame {
         pack();
 
         // Listeners (Actions & Keys)
+
+        /* Listener boton crear:
+         * 1. crea intancia un panelConfigLab y le pasa por parametro this
+         * 2. La pone visible
+         * 3. le asigna focus
+         */
     }
+
+    //----------------------------------------
+    // GETTERS Y SETTERS
+    //----------------------------------------
+    /**
+     * @return the builder
+     */
+    public final Builder getBuilder() {
+        return builder;
+    }
+
+    /**
+     * @param builder the builder to set
+     */
+    public final void setBuilder(final Builder builder) {
+        this.builder = builder;
+    }
+
+    /**
+     * @return the director
+     */
+    public final Director getDirector() {
+        return director;
+    }
+
+    /**
+     * @param director the director to set
+     */
+    public final void setDirector(final Director director) {
+        this.director = director;
+    }
+
+    /**
+     * @return the laberinto
+     */
+    public final Laberinto getLaberinto() {
+        return laberinto;
+    }
+
+    /**
+     * @param laberinto the laberinto to set
+     */
+    public final void setLaberinto(final Laberinto laberinto) {
+        this.laberinto = laberinto;
+    }
+
 }

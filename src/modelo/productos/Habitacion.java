@@ -223,4 +223,33 @@ public class Habitacion implements Serializable {
         }
         return -1;
     }
+
+    /**
+     * @return the tam
+     */
+    public final int getTam() {
+        return tam;
+    }
+
+    /**
+     * @param size the tam to set
+     */
+    public final void setTam(final int size) {
+        this.tam = size;
+    }
+
+    /**
+     * @return the personajes
+     */
+    public final ArrayList<Personaje> getPersonajes() {
+        return personajes;
+    }
+
+    /**
+     * @param personajes the personajes to set
+     */
+    public final void setPersonajes(final ArrayList<Personaje> personajes) {
+        this.personajes = personajes;
+    }
+
 }
