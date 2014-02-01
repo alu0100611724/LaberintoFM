@@ -93,4 +93,19 @@ public class MarioHab extends Habitacion {
         }
         return false;
     }
+
+    /**
+     * @return the vidas
+     */
+    public static final int getVidas() {
+        return vidas;
+    }
+
+    /**
+     * @param vidas the vidas to set
+     */
+    public static final void setVidas(int vidas) {
+        MarioHab.vidas = vidas;
+    }
+
 }

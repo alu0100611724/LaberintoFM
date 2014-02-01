@@ -59,4 +59,24 @@ public class MarioLab extends Laberinto {
             System.out.println("\n¡Felicidades Mario! Has rescatado a Peach.");
         }
     }
+
+    /**
+     * Metodo play para venta grafica.
+     * @param key direccion a la que se mueve el heroe.
+     * @return -1 => misma habitacion, -2 => game over, -3 => You Win y en
+     * otro caso el id de la nueva habitacionActual.
+     */
+    public int play(char key) {
+        int estado = -1;
+
+        estado = habitaciones.get(habActual).play(key);
+
+        switch(estado) {
+            case -1:                     //misma hab
+            case -2:                     //perdiste
+            case -3: break;              //ganaste
+            default: habActual = estado; //cambia habActual
+        }
+        return estado;
+    }
 }

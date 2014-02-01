@@ -98,4 +98,19 @@ public class PokemonHab extends Habitacion {
             return -2; //Si ganamos.
         }
     }
+
+    /**
+     * @return the pokemonCont
+     */
+    public static final int getPokemonCont() {
+        return pokemonCont;
+    }
+
+    /**
+     * @param pokemonCont the pokemonCont to set
+     */
+    public static final void setPokemonCont(int pokemonCont) {
+        PokemonHab.pokemonCont = pokemonCont;
+    }
+
 }

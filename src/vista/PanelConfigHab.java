@@ -99,7 +99,7 @@ public class PanelConfigHab extends JFrame {
           // Creando Panel Numero de Monstruos con BorderLayout
           JPanel pMonstruos = new JPanel();
           pMonstruos.setLayout(new BorderLayout(15, 15));
-          sMonstruos = new JSlider(1, 5, 1);
+          sMonstruos = new JSlider(1, 3, 1);
           sMonstruos.setMajorTickSpacing(1);
           sMonstruos.setPaintTicks(true);
           lMonstruos = new JLabel();

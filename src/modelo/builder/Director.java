@@ -163,11 +163,12 @@ public class Director {
      */
     public final Laberinto cargarPredeterminado() throws IOException,
         ClassNotFoundException {
-
+        try {
         Fichero fichero = new Fichero();
         ObjectInputStream ois = fichero.lecturaPredetetminada();
-
         return ((Laberinto) ois.readObject());
+        } catch (Exception e) {}
+        return null;
     }
 
     // -------------------------

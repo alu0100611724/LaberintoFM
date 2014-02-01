@@ -5,6 +5,8 @@ import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import modelo.complementos.Posicion;
+
 /**
  * Clase que representa al laberinto.
  * @author Mauri
@@ -93,6 +95,10 @@ public class Laberinto implements Serializable {
         habitaciones.get(habActual).pintar();
     }
 
+    public final char pintarVentana(int i, int j) {
+        return habitaciones.get(habActual).getElemento(
+                                                new Posicion(i, j)).getImagen();
+    }
     /**
      * Este metodo implementa la jugabilidad en el laberinto.
      */
@@ -121,6 +127,25 @@ public class Laberinto implements Serializable {
             }
         } while (estado != -2);
         System.out.println("\nGAME OVER");
+    }
+
+    /**
+     * Metodo play para venta grafica.
+     * @param key direccion a la que se mueve el heroe.
+     * @return -1 => misma habitacion, -2 => game over, en
+     * otro caso el id de la nueva habitacionActual.
+     */
+    public int play(char key) {
+        int estado = -1;
+
+        estado = habitaciones.get(habActual).play(key);
+
+        switch(estado) {
+            case -1:                     //misma hab
+            case -2: break;              //perdiste
+            default: habActual = estado; //cambia habActual
+        }
+        return estado;
     }
 
     /**

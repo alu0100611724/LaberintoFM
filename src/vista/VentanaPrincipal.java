@@ -5,6 +5,8 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 import javax.swing.JButton;
@@ -16,6 +18,7 @@ import javax.swing.border.TitledBorder;
 import modelo.builder.Builder;
 import modelo.builder.Director;
 import modelo.builder.JuegoMarioLabBuilder;
+import modelo.complementos.Posicion;
 import modelo.productos.Laberinto;
 
 
@@ -48,6 +51,8 @@ public class VentanaPrincipal extends JFrame {
     private PanelConfigHab pCH;
     private PanelConfigConexiones pCC;
 
+    private JPanel pJuego;
+    private JPanel pHabitacion;
     private JButton bObjetivo;
     private JButton bCambiar;
     private JButton bGuardar;
@@ -111,6 +116,16 @@ public class VentanaPrincipal extends JFrame {
         repaint();
     }
 
+    public final void pintarLab(JPanel pHab) {
+        int tamHabActual = laberinto.getHabI(laberinto.getHabActual()).getTam();
+        pHab.setLayout(new GridLayout(tamHabActual, tamHabActual, 0, 0));
+        pHab.setBorder(new TitledBorder("Mario Bros."));
+        for (int i = 0; i < tamHabActual; i++) {
+            for (int j = 0; j < tamHabActual; j++) {
+                pHab.add(new JLabel("" + laberinto.pintarVentana(i, j)));
+            }
+        }
+    }
     //----------------------------------------
     // METODOS PRIVADOS
     //----------------------------------------
@@ -139,12 +154,8 @@ public class VentanaPrincipal extends JFrame {
         pMenu.add(bSalir = new JButton("Salir"));
 
         // Panel Habitacion
-        JPanel pHabitacion = new JPanel();
-        pHabitacion.setLayout(new GridLayout(10, 10, 0, 0)); // cambiar por tamHabitacion
-        pHabitacion.setBorder(new TitledBorder("Mario Bros."));
-        for (int i = 0; i < 100; i++) {
-          pHabitacion.add(new JLabel("" + i)); // Add imagen de cada elemento de la habitacion
-        }
+        pHabitacion = new JPanel();
+        pintarLab(pHabitacion);
 
         // Panel que indica el Estado del juego.
         JPanel pEstadoJuego = new JPanel();
@@ -153,7 +164,7 @@ public class VentanaPrincipal extends JFrame {
         pEstadoJuego.add(new JLabel("X"));
 
         // Panel que combina la habitacion con el estado del juego
-        JPanel pJuego = new JPanel();
+        pJuego = new JPanel();
         pJuego.setLayout(new BorderLayout());
         pJuego.add(pHabitacion, BorderLayout.CENTER);
         pJuego.add(pEstadoJuego, BorderLayout.SOUTH);
@@ -166,6 +177,36 @@ public class VentanaPrincipal extends JFrame {
         pack();
 
         // Listeners (Actions & Keys)
+        this.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                switch (e.getKeyCode()) {
+                  case KeyEvent.VK_DOWN: laberinto.play('s');
+                  laberinto.pintar();
+                  break;
+                  case KeyEvent.VK_UP: laberinto.play('w');
+                  laberinto.pintar();
+                  break;
+                  case KeyEvent.VK_LEFT: laberinto.play('a');
+                  laberinto.pintar();
+                  break;
+                  case KeyEvent.VK_RIGHT: laberinto.play('d');
+                  laberinto.pintar();
+                  break;
+                  default: //do nothing
+                }
+                pJuego.removeAll();
+                pHabitacion = new JPanel();
+                pintarLab(pHabitacion);
+                JPanel pEstadoJuego = new JPanel();
+                pEstadoJuego.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
+                pEstadoJuego.add(new JLabel("Vidas: ")); // Cambia vidas por pokemons de acuerdo al modo de juego
+                pEstadoJuego.add(new JLabel("X"));
+                pJuego.add(pHabitacion, BorderLayout.CENTER);
+                pJuego.add(pEstadoJuego, BorderLayout.SOUTH);
+                validate();
+            }
+        });
+
         bCambiar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
@@ -280,6 +321,20 @@ public class VentanaPrincipal extends JFrame {
      */
     public final void setContHabs(int contHabs) {
         this.contHabs = contHabs;
+    }
+
+    /**
+     * @return the pHabitacion
+     */
+    public final JPanel getPHabitacion() {
+        return pHabitacion;
+    }
+
+    /**
+     * @param pHabitacion the pHabitacion to set
+     */
+    public final void setPHabitacion(JPanel pHabitacion) {
+        this.pHabitacion = pHabitacion;
     }
 
 }
