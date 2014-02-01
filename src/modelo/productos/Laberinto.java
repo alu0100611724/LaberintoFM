@@ -124,6 +124,7 @@ public class Laberinto implements Serializable {
     }
 
     /**
+     * Retorna la habitacion en la posicion i.
      * @return the habitaciones
      */
     public final Habitacion getHabI(int index) {
@@ -131,11 +132,11 @@ public class Laberinto implements Serializable {
     }
 
     /**
+     * Guarda la habitacion dada en la posicion i.
      * @param habitaciones the habitaciones to set
      */
     public final void setHabI(int index, Habitacion habitacion) {
         this.habitaciones.set(index, habitacion);
     }
-    
-    
+
 }

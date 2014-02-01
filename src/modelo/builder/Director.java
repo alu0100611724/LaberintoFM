@@ -103,6 +103,34 @@ public class Director {
     }
 
     /**
+     * Crea una Habitacion de tam = size y n mosntruos.
+     * @param size Tam habitacion.
+     * @param nMonstruos Numero de monstruos.
+     */
+    public final void crearHab(int size, int nMonstruos) {
+        builder.fabricarHab(size, nMonstruos, numHab);
+    }
+
+    /**
+     * Crea una conexion entre las puertas de dos habitaciones.
+     * @param hO Habitacion Origen.
+     * @param pO Puerta Origen.
+     * @param hD Habitacion Destino.
+     * @param pD Puerta Destino.
+     */
+    public final void crearConexion(int hO, int pO, int hD, int pD)  {
+        builder.conectar(pO, hO, pD, hD);
+    }
+
+    /**
+     * Establece cual es la habitacion que se muestra en el juego.
+     * @param hActual Normalmente es la primera habitacion creada.
+     */
+    public final void habActual(int hActual) {
+        builder.setHabActual(hActual);
+    }
+
+    /**
      * Guarda el laberinto creado o la partida que se esta jugando.
      * @throws IOException Error de lectura de fichero.
      */
@@ -127,6 +155,21 @@ public class Director {
         return ((Laberinto) ois.readObject());
     }
 
+    /**
+     * Carga el laberinto predeterminado.
+     * @throws IOException Error de lectura de fichero.
+     * @throws ClassNotFoundException Error de clase.
+     * @return Laberinto.
+     */
+    public final Laberinto cargarPredeterminado() throws IOException,
+        ClassNotFoundException {
+
+        Fichero fichero = new Fichero();
+        ObjectInputStream ois = fichero.lecturaPredetetminada();
+
+        return ((Laberinto) ois.readObject());
+    }
+
     // -------------------------
     // GETTERS Y SETTERS
     // -------------------------
@@ -140,7 +183,7 @@ public class Director {
     /**
      * @param numHabs the numHab to set
      */
-    public final void setNumHabs(final int numHabs) {
+    public final void setNumHabs(int numHabs) {
         this.numHab = numHabs;
     }
 
@@ -154,7 +197,7 @@ public class Director {
     /**
      * @param tamHabitacion the tamHab to set
      */
-    public final void setTamHab(final int tamHabitacion) {
+    public final void setTamHab(int tamHabitacion) {
         this.tamHab = tamHabitacion;
     }
 
@@ -168,7 +211,7 @@ public class Director {
     /**
      * @param numMonstruosHab the numMonstruos to set
      */
-    public final void setNumMonstruos(final int numMonstruosHab) {
+    public final void setNumMonstruos(int numMonstruosHab) {
         this.numMonstruos = numMonstruosHab;
     }
 
@@ -182,7 +225,7 @@ public class Director {
     /**
      * @param puertaOrigin the pOrigin to set
      */
-    public final void setPuertaOrigin(final int puertaOrigin) {
+    public final void setPuertaOrigin(int puertaOrigin) {
         this.pOrigin = puertaOrigin;
     }
 
@@ -196,7 +239,7 @@ public class Director {
     /**
      * @param puertaDest the pDest to set
      */
-    public final void setPuertaDest(final int puertaDest) {
+    public final void setPuertaDest(int puertaDest) {
         this.pDest = puertaDest;
     }
 
@@ -210,7 +253,7 @@ public class Director {
     /**
      * @param habOrigin the hOrigin to set
      */
-    public final void setHabOrigin(final int habOrigin) {
+    public final void setHabOrigin(int habOrigin) {
         this.hOrigin = habOrigin;
     }
 
@@ -224,7 +267,7 @@ public class Director {
     /**
      * @param habDest the hDest to set
      */
-    public final void setHabDest(final int habDest) {
+    public final void setHabDest(int habDest) {
         this.hDest = habDest;
     }
 
@@ -238,7 +281,7 @@ public class Director {
     /**
      * @param builder the builder to set
      */
-    public final void setBuilder(final Builder builder) {
+    public final void setBuilder(Builder builder) {
         this.builder = builder;
     }
 }

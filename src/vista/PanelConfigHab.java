@@ -6,7 +6,6 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,6 +16,8 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 /**
+ * Esta ventana se llamara tantas veces como habitaciones se desee crear.
+ * El usuario indica el tamano de la habitacion y los monstruos que contiene.
  * @author Mauri
  *
  */
@@ -25,27 +26,16 @@ public class PanelConfigHab extends JFrame {
       //----------------------------------------
       // CONSTANTES
       //----------------------------------------
-      static final String TITULO = "Hab: ";
-      /**
-       * Numero de espacios definido entre elementos.
-       */
-      static final int ANCHO_BORDES = 10;
+      static final String TITULO = "Hab: 1";
 
       //----------------------------------------
       // ATRIBUTOS
       //----------------------------------------
-      /**
-       * Ventana Principal de la Aplicacion.
-       */
       private VentanaPrincipal vp;
-      /**
-       * Numero de la Habitacion que se esta configurando.
-       */
-      private int n;
 
       private JSlider sTam, sMonstruos;
       private JLabel lTam, lMonstruos;
-      private JButton bAtras, bSiguiente;
+      private JButton bCancelar, bSiguiente;
 
       //----------------------------------------
       // CONSTRUCTORES
@@ -56,19 +46,16 @@ public class PanelConfigHab extends JFrame {
        */
       public PanelConfigHab() {
           super(TITULO);
-          vp = new VentanaPrincipal();
           inicializar();
       }
 
       /**
        * Construtor de Panel de Configuracion de Habitaciones.
        * @param vPrincipal Ventana Principal.
-       * @param index Numero de la Habitacion a configurar.
        */
-      public PanelConfigHab(final VentanaPrincipal vPrincipal,final int index) {
-          super(TITULO + index + 1);
+      public PanelConfigHab(VentanaPrincipal vPrincipal) {
+          super(TITULO);
           vp = vPrincipal;
-          n = index;
           inicializar();
       }
 
@@ -95,7 +82,7 @@ public class PanelConfigHab extends JFrame {
           setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
           setLocationRelativeTo(null);
           setResizable(false);
-          setVisible (true);
+          setVisible (false);
 
           // Creando Panel Tamano Habitacion utilizando BorderLayout
           JPanel pTam = new JPanel();
@@ -125,9 +112,9 @@ public class PanelConfigHab extends JFrame {
           JPanel pBotones = new JPanel();
           pBotones.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 25));
           bSiguiente = new JButton("Siguiente");
-          bAtras = new JButton("  Atras  ");
-          bAtras.setSize(bSiguiente.getWidth(), bSiguiente.getHeight());
-          pBotones.add(bAtras);
+          bCancelar = new JButton("Cancelar");
+          bCancelar.setSize(bSiguiente.getWidth(), bSiguiente.getHeight());
+          pBotones.add(bCancelar);
           pBotones.add(bSiguiente);
 
           // Set listeners
@@ -153,6 +140,34 @@ public class PanelConfigHab extends JFrame {
                   } else {
                       lMonstruos.setText(String.valueOf(sMonstruos.getValue()));
                   }
+              }
+          });
+
+          bSiguiente.addActionListener(new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent arg0) {
+                  if (vp.getContHabs() < vp.getDirector().getNumHabs()) {
+                      vp.getDirector().crearHab(sTam.getValue(),
+                              sMonstruos.getValue());
+                      vp.getpCH().dispose();
+                      vp.setContHabs(vp.getContHabs() + 1);
+                      vp.setpCH(new PanelConfigHab(vp));
+                      vp.getpCH().setTitle("Hab: " + vp.getContHabs());
+                      vp.getpCH().setVisible(true);
+                  } else {
+                      vp.getDirector().crearHab(sTam.getValue(),
+                              sMonstruos.getValue());
+                      vp.getpCH().setVisible(false);
+                      vp.getpCC().setVisible(true);
+                  }
+
+              }
+          });
+
+          bCancelar.addActionListener(new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent arg0) {
+                  dispose();
               }
           });
 

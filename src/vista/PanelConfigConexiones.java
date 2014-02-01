@@ -19,6 +19,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 /**
+ * Panel de configuracion de Las comunicaciones entre las habitaciones.
  * @author Mauri
  *
  */
@@ -27,10 +28,6 @@ public class PanelConfigConexiones extends JFrame {
     // CONSTANTES
     //----------------------------------------
     static final String TITULO = "Conexiones";
-    /**
-     * Numero de espacios definido entre elementos.
-     */
-    static final int ANCHO_BORDES = 10;
 
     //----------------------------------------
     // ATRIBUTOS
@@ -62,7 +59,7 @@ public class PanelConfigConexiones extends JFrame {
      * Construtor de Panel de Configuracion de las Conexiones entre puertas.
      * @param vPrincipal Ventana Principal.
      */
-    public PanelConfigConexiones(final VentanaPrincipal vPrincipal) {
+    public PanelConfigConexiones(VentanaPrincipal vPrincipal) {
         super(TITULO);
         vp = vPrincipal;
         inicializar();
@@ -79,6 +76,21 @@ public class PanelConfigConexiones extends JFrame {
         new PanelConfigConexiones();
     }
 
+    /**
+     * Modifica el tamano max del slider.
+     * @param valorMaxSlider
+     */
+    public void setMaxSHabO(int valorMaxSlider){
+        sHabO.setMaximum(valorMaxSlider);
+    }
+
+    /**
+     * Modifica el tamano max del slider.
+     * @param valorMaxSlider
+     */
+    public void setMaxSHabD(int valorMaxSlider){
+        sHabD.setMaximum(valorMaxSlider);
+    }
     //----------------------------------------
     // METODOS PRIVADOS
     //----------------------------------------
@@ -91,13 +103,12 @@ public class PanelConfigConexiones extends JFrame {
         setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
-        setVisible (true);
+        setVisible (false);
 
         // Creando Panel Habitacion Origen utilizando BorderLayout
         JPanel p1 = new JPanel();
         p1.setLayout(new BorderLayout(15, 15));
         sHabO = new JSlider(1, 20, 1);
-        //sHabO = new JSlider(1, vp.getDirector().getNumHabs(), 1); <---------------
         sHabO.setMajorTickSpacing(1);
         sHabO.setPaintTicks(true);
         lHabO = new JLabel();
@@ -122,13 +133,9 @@ public class PanelConfigConexiones extends JFrame {
         grupoOrigen.add(oE);
         grupoOrigen.add(oO);
 
-        // Fijamos modo mario por defecto
-        oN.setSelected(true);
-
         // Creando Panel Habitacion Destino utilizando BorderLayout
         JPanel p3 = new JPanel();
         p3.setLayout(new BorderLayout(15, 15));
-        //sHabD = new JSlider(1, vp.getDirector().getNumHabs(), 1); <--------------
         sHabD = new JSlider(1, 20, 1);
         sHabD.setMajorTickSpacing(1);
         sHabD.setPaintTicks(true);
@@ -153,9 +160,6 @@ public class PanelConfigConexiones extends JFrame {
         grupoDestino.add(dS);
         grupoDestino.add(dE);
         grupoDestino.add(dO);
-
-        // Fijamos modo mario por defecto
-        dN.setSelected(true);
 
         // Crea Panel para los botones con FlowLayout
         JPanel p5 = new JPanel();
@@ -190,12 +194,58 @@ public class PanelConfigConexiones extends JFrame {
             }
         });
 
+        bFin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                //fijamos valores por defecto
+                vp.getDirector().setPuertaOrigin(1);
+                vp.getDirector().setPuertaDest(1);
+
+                if (oN.isEnabled()) {
+                    vp.getDirector().setPuertaOrigin(1);
+                }
+                if (oS.isEnabled()) {
+                    vp.getDirector().setPuertaOrigin(2);
+                }
+                if (oE.isEnabled()) {
+                    vp.getDirector().setPuertaOrigin(3);
+                }
+                if (oO.isEnabled()) {
+                    vp.getDirector().setPuertaOrigin(4);
+                }
+                if (dN.isEnabled()) {
+                    vp.getDirector().setPuertaDest(1);
+                }
+                if (dS.isEnabled()) {
+                    vp.getDirector().setPuertaDest(2);
+                }
+                if (dE.isEnabled()) {
+                    vp.getDirector().setPuertaDest(3);
+                }
+                if (dO.isEnabled()) {
+                    vp.getDirector().setPuertaDest(4);
+                }
+
+                vp.getDirector().crearConexion((sHabO.getValue() - 1),
+                        vp.getDirector().getPuertaOrigin(),
+                        (sHabD.getValue() - 1),
+                        vp.getDirector().getPuertaDest());
+                vp.getDirector().habActual(0);
+                vp.resetVentanas();
+            }
+        });
+
         // Agregando Paneles
         add(p1);
         add(p2);
         add(p3);
         add(p4);
         add(p5);
+
+        // Fijamos puerta norte por defecto
+        oN.setSelected(true);
+        dN.setSelected(true);
+
         // Ajusta el tamano de la ventana a su contenido.
         pack();
     }

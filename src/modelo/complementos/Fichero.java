@@ -57,4 +57,16 @@ public class Fichero {
         return entrada;
     }
 
+    /**
+     * Lee partida Predeterminada.
+     * @return Flujo de lectura de objetos por fichero.
+     * @throws IOException Error de Entrada/Salida por defecto.
+     */
+    public final ObjectInputStream lecturaPredetetminada() throws IOException {
+        String ruta = System.getProperty("user.dir")
+                      + "\\src\\recursos\\mario1.dat";
+        FileInputStream fis = new FileInputStream(ruta);
+        ObjectInputStream entrada = new ObjectInputStream(fis);
+        return entrada;
+    }
 }

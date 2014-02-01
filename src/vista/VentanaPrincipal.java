@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,11 +15,13 @@ import javax.swing.border.TitledBorder;
 
 import modelo.builder.Builder;
 import modelo.builder.Director;
+import modelo.builder.JuegoMarioLabBuilder;
 import modelo.productos.Laberinto;
 
 
 /**
  * Ventana Principal de la Aplicacion.
+ * Esta formada por un menu y un panel de juego.
  * @author Mauri
  *
  */
@@ -27,6 +30,9 @@ public class VentanaPrincipal extends JFrame {
     //----------------------------------------
     // CONSTANTES
     //----------------------------------------
+    /**
+     * Titulo por defecto de la ventana.
+     */
     static final String TITULO = "MazeMaker";
     static final int ANCHO_BORDES = 10;
 
@@ -36,6 +42,11 @@ public class VentanaPrincipal extends JFrame {
     private Builder builder;
     private Director director;
     private Laberinto laberinto;
+    private int contHabs;
+
+    private PanelConfigLab pCL;
+    private PanelConfigHab pCH;
+    private PanelConfigConexiones pCC;
 
     private JButton bObjetivo;
     private JButton bCambiar;
@@ -52,7 +63,16 @@ public class VentanaPrincipal extends JFrame {
      */
     public VentanaPrincipal() {
         super(TITULO);
+        Builder b = new JuegoMarioLabBuilder();
+        Director d = new Director(b);
+        try {
+            laberinto = d.cargarPredeterminado();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        contHabs = 1;
         inicializar();
+        //laberinto.play();
     }
 
     /**
@@ -61,6 +81,7 @@ public class VentanaPrincipal extends JFrame {
      */
     public VentanaPrincipal(final String titulo) {
         super(titulo);
+
         inicializar();
     }
 
@@ -75,6 +96,21 @@ public class VentanaPrincipal extends JFrame {
         new VentanaPrincipal();
     }
 
+    /**
+     * Reinicia los paneles, obtiene el nuevo laberinto y lo pinta.
+     */
+    public final void resetVentanas() {
+        laberinto = director.getBuilder().getLab();
+        contHabs = 1;
+        pCL.dispose();
+        pCH.dispose();
+        pCC.dispose();
+        pCL = new PanelConfigLab(this);
+        pCH = new PanelConfigHab(this);
+        pCC = new PanelConfigConexiones(this);
+        repaint();
+    }
+
     //----------------------------------------
     // METODOS PRIVADOS
     //----------------------------------------
@@ -87,6 +123,10 @@ public class VentanaPrincipal extends JFrame {
         setLocationRelativeTo(null);
         setResizable(true);
         setVisible(true);
+
+        pCL = new PanelConfigLab(this);
+        pCH = new PanelConfigHab(this);
+        pCC = new PanelConfigConexiones(this);
 
         // Panel Botones
         JPanel pMenu = new JPanel();
@@ -126,12 +166,19 @@ public class VentanaPrincipal extends JFrame {
         pack();
 
         // Listeners (Actions & Keys)
+        bCambiar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+              pCL.setVisible(true);
+            }
+        });
 
-        /* Listener boton crear:
-         * 1. crea intancia un panelConfigLab y le pasa por parametro this
-         * 2. La pone visible
-         * 3. le asigna focus
-         */
+        bSalir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+              dispose();
+            }
+        });
     }
 
     //----------------------------------------
@@ -147,7 +194,7 @@ public class VentanaPrincipal extends JFrame {
     /**
      * @param builder the builder to set
      */
-    public final void setBuilder(final Builder builder) {
+    public final void setBuilder(Builder builder) {
         this.builder = builder;
     }
 
@@ -161,7 +208,7 @@ public class VentanaPrincipal extends JFrame {
     /**
      * @param director the director to set
      */
-    public final void setDirector(final Director director) {
+    public final void setDirector(Director director) {
         this.director = director;
     }
 
@@ -175,8 +222,64 @@ public class VentanaPrincipal extends JFrame {
     /**
      * @param laberinto the laberinto to set
      */
-    public final void setLaberinto(final Laberinto laberinto) {
+    public final void setLaberinto(Laberinto laberinto) {
         this.laberinto = laberinto;
+    }
+
+    /**
+     * @return the pCL
+     */
+    public final PanelConfigLab getpCL() {
+        return pCL;
+    }
+
+    /**
+     * @param pCL the pCL to set
+     */
+    public final void setpCL(PanelConfigLab pCL) {
+        this.pCL = pCL;
+    }
+
+    /**
+     * @return the pCH
+     */
+    public final PanelConfigHab getpCH() {
+        return pCH;
+    }
+
+    /**
+     * @param pCH the pCH to set
+     */
+    public final void setpCH(PanelConfigHab pCH) {
+        this.pCH = pCH;
+    }
+
+    /**
+     * @return the pCC
+     */
+    public final PanelConfigConexiones getpCC() {
+        return pCC;
+    }
+
+    /**
+     * @param pCC the pCC to set
+     */
+    public final void setpCC(PanelConfigConexiones pCC) {
+        this.pCC = pCC;
+    }
+
+    /**
+     * @return the contHabs
+     */
+    public final int getContHabs() {
+        return contHabs;
+    }
+
+    /**
+     * @param contHabs the contHabs to set
+     */
+    public final void setContHabs(int contHabs) {
+        this.contHabs = contHabs;
     }
 
 }

@@ -17,6 +17,9 @@ import javax.swing.JSlider;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import modelo.builder.Director;
+import modelo.builder.JuegoMarioLabBuilder;
+import modelo.builder.JuegoPokemonLabBuilder;
 
 /**
  * Panel de Configuracion del laberinto.
@@ -42,9 +45,7 @@ public class PanelConfigLab extends JFrame {
     private JButton bCancelar, bSiguiente;
     private JSlider sNumHabs;
     private JLabel lNumHabs;
-    /**
-     * Ventana Principal
-     */
+
     private VentanaPrincipal vp;
 
     //----------------------------------------
@@ -53,9 +54,9 @@ public class PanelConfigLab extends JFrame {
     /**
      * Construye Panel de Configuracion del Laberinto.
      * Este constructor es el que se llama desde la Ventana Principal.
-     * @param vPrincipal Recibe la ventana principal.
+     * @param vPrincipal Ventana principal del juego.
      */
-    public PanelConfigLab(final VentanaPrincipal vPrincipal) {
+    public PanelConfigLab(VentanaPrincipal vPrincipal) {
         super(TITULO);
         vp = vPrincipal;
         inicializar();
@@ -67,7 +68,6 @@ public class PanelConfigLab extends JFrame {
      */
     public PanelConfigLab() {
         super(TITULO);
-        vp = new VentanaPrincipal();
         inicializar();
     }
 
@@ -95,7 +95,7 @@ public class PanelConfigLab extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
-        setVisible(true);
+        setVisible(false);
 
         // Creando Panel para los radio buttons utilizando GridLayout
         JPanel p1 = new JPanel();
@@ -112,9 +112,6 @@ public class PanelConfigLab extends JFrame {
         // Set keyboard mnemonics
         rbMario.setMnemonic('M');
         rbPokemon.setMnemonic('P');
-
-        // Fijamos modo mario por defecto
-        rbMario.setSelected(true);
 
         // Crea Panel para el slider utilizando BorderLayout
         JPanel p2 = new JPanel();
@@ -135,6 +132,20 @@ public class PanelConfigLab extends JFrame {
         p3.add(bSiguiente = new JButton("Siguiente"));
 
         // Set listeners
+        rbMario.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                vp.setBuilder(new JuegoMarioLabBuilder());
+            }
+        });
+
+        rbPokemon.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                vp.setBuilder(new JuegoPokemonLabBuilder());
+            }
+        });
+
         sNumHabs.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent arg0) {
@@ -151,18 +162,18 @@ public class PanelConfigLab extends JFrame {
             @Override
             public void actionPerformed(ActionEvent arg0) {
               dispose();
-              // Abrir Ventana principal
             }
         });
 
         bSiguiente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-              /* Si rb Mario creamos laberinto mario con n habitaciones
-               * sino creamos laberinto pokemon
-               * llamamos a la siguiente ventana pasando como argumento vp
-               * cerramos ventana actual
-               */
+                vp.getpCL().setVisible(false);
+                vp.getpCH().setVisible(true);
+                vp.setDirector(new Director(vp.getBuilder()));
+                vp.getDirector().setNumHabs(sNumHabs.getValue());
+                vp.getpCC().setMaxSHabO(sNumHabs.getValue());
+                vp.getpCC().setMaxSHabD(sNumHabs.getValue());
             }
         });
 
@@ -170,6 +181,10 @@ public class PanelConfigLab extends JFrame {
         add(p1);
         add(p2);
         add(p3);
+
+        // Fijamos modo mario por defecto
+        rbMario.setSelected(true);
+        vp.setBuilder(new JuegoMarioLabBuilder());
 
         // Ajusta el tamano de la ventana a su contenido.
         pack();
