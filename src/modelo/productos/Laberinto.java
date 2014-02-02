@@ -31,11 +31,17 @@ public class Laberinto implements Serializable {
     protected int habActual;
 
     /**
+     * Indica el tipo del juego del laberinto.
+     */
+    protected String tipo;
+
+    /**
      * Constructor.
      */
     public Laberinto() {
         habitaciones = new ArrayList < Habitacion >();
         habActual = -1;
+        tipo = "Normal";
     }
 
     /**
@@ -95,6 +101,12 @@ public class Laberinto implements Serializable {
         habitaciones.get(habActual).pintar();
     }
 
+    /**
+     * Retorna la imagen del elemento de la habitacion actual.
+     * @param i Fila.
+     * @param j Columna.
+     * @return la imagen del elemento en la posicion i, j.
+     */
     public final char pintarVentana(int i, int j) {
         return habitaciones.get(habActual).getElemento(
                                                 new Posicion(i, j)).getImagen();
@@ -126,13 +138,13 @@ public class Laberinto implements Serializable {
                 estado = -2;
             }
         } while (estado != -2);
-        System.out.println("\nGAME OVER");
+        System.out.println("\nYOU WIN");
     }
 
     /**
      * Metodo play para venta grafica.
      * @param key direccion a la que se mueve el heroe.
-     * @return -1 => misma habitacion, -2 => game over, en
+     * @return -1 => misma habitacion, -2 => you win, en
      * otro caso el id de la nueva habitacionActual.
      */
     public int play(char key) {
@@ -142,7 +154,7 @@ public class Laberinto implements Serializable {
 
         switch(estado) {
             case -1:                     //misma hab
-            case -2: break;              //perdiste
+            case -2: break;              //you win
             default: habActual = estado; //cambia habActual
         }
         return estado;
@@ -158,10 +170,24 @@ public class Laberinto implements Serializable {
 
     /**
      * Guarda la habitacion dada en la posicion i.
-     * @param habitaciones the habitaciones to set
+     * @param habitacion the habitaciones to set
      */
     public final void setHabI(int index, Habitacion habitacion) {
         this.habitaciones.set(index, habitacion);
+    }
+
+    /**
+     * @return the tipo
+     */
+    public final String getTipo() {
+        return tipo;
+    }
+
+    /**
+     * @param tipo the tipo to set
+     */
+    public final void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
 }

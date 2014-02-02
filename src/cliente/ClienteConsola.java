@@ -14,7 +14,7 @@ import modelo.productos.Laberinto;
  * @author Mauri
  *
  */
-public class Cliente {
+public class ClienteConsola {
 
     /**
      * Atributo donde se Almacenara el builder.

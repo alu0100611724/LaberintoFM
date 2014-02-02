@@ -25,6 +25,7 @@ public class PokemonLab extends Laberinto {
      */
     public PokemonLab() {
         super();
+        setTipo("Pokemon");
     }
 
     /**

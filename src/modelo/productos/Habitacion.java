@@ -185,7 +185,7 @@ public class Habitacion implements Serializable {
     /**
      * Este metodo implementa la jugabilidad en el laberinto.
      * @param dir es la direccion a la que se desea mover.
-     * @return -1 => misma habitacion, -2 => game over y en otro caso es la
+     * @return -1 => misma habitacion, -2 => you win y en otro caso es la
      * nueva habActual.
      */
     public int play(final char dir) {

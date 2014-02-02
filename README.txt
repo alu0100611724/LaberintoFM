@@ -1,6 +1,6 @@
 JUEGO DEL LABERINTO
 
-Version 4.2.0 - MVC
+Version 4.2.1 - MVC
 Este programa es un juego diseñado para la clase de Diseño de Patrones Arquitectónicos.
 Para su implementacion se utilizan las siguientes herramientas:
 

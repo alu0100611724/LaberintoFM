@@ -4,9 +4,6 @@ package vista;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,11 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSlider;
 import javax.swing.border.TitledBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import modelo.builder.Director;
+import controlador.ControladorPCL;
 import modelo.builder.JuegoMarioLabBuilder;
-import modelo.builder.JuegoPokemonLabBuilder;
 
 /**
  * Panel de Configuracion del laberinto.
@@ -47,6 +41,7 @@ public class PanelConfigLab extends JFrame {
     private JLabel lNumHabs;
 
     private VentanaPrincipal vp;
+    private ControladorPCL cPCL;
 
     //----------------------------------------
     // CONSTRUCTORES
@@ -59,6 +54,7 @@ public class PanelConfigLab extends JFrame {
     public PanelConfigLab(VentanaPrincipal vPrincipal) {
         super(TITULO);
         vp = vPrincipal;
+        cPCL = new ControladorPCL(vp);
         inicializar();
     }
 
@@ -68,6 +64,7 @@ public class PanelConfigLab extends JFrame {
      */
     public PanelConfigLab() {
         super(TITULO);
+        cPCL = new ControladorPCL(vp);
         inicializar();
     }
 
@@ -132,50 +129,11 @@ public class PanelConfigLab extends JFrame {
         p3.add(bSiguiente = new JButton("Siguiente"));
 
         // Set listeners
-        rbMario.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                vp.setBuilder(new JuegoMarioLabBuilder());
-            }
-        });
-
-        rbPokemon.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                vp.setBuilder(new JuegoPokemonLabBuilder());
-            }
-        });
-
-        sNumHabs.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent arg0) {
-                if (sNumHabs.getValue() < 10) {
-                    lNumHabs.setText("0"
-                                + String.valueOf(sNumHabs.getValue()));
-                } else {
-                    lNumHabs.setText(String.valueOf(sNumHabs.getValue()));
-                }
-            }
-        });
-
-        bCancelar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-              dispose();
-            }
-        });
-
-        bSiguiente.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                vp.getpCL().setVisible(false);
-                vp.getpCH().setVisible(true);
-                vp.setDirector(new Director(vp.getBuilder()));
-                vp.getDirector().setNumHabs(sNumHabs.getValue());
-                vp.getpCC().setMaxSHabO(sNumHabs.getValue());
-                vp.getpCC().setMaxSHabD(sNumHabs.getValue());
-            }
-        });
+        rbMario.addActionListener(cPCL);
+        rbPokemon.addActionListener(cPCL);
+        sNumHabs.addChangeListener(cPCL);
+        bCancelar.addActionListener(cPCL);
+        bSiguiente.addActionListener(cPCL);
 
         // Agregando Paneles
         add(p1);
@@ -189,4 +147,107 @@ public class PanelConfigLab extends JFrame {
         // Ajusta el tamano de la ventana a su contenido.
         pack();
     }
+
+    //----------------------------------------
+    // GETTERS Y SETTERS
+    //----------------------------------------
+
+    /**
+     * @return the rbMario
+     */
+    public final JRadioButton getRbMario() {
+        return rbMario;
+    }
+
+    /**
+     * @param rbMario the rbMario to set
+     */
+    public final void setRbMario(JRadioButton rbMario) {
+        this.rbMario = rbMario;
+    }
+
+    /**
+     * @return the rbPokemon
+     */
+    public final JRadioButton getRbPokemon() {
+        return rbPokemon;
+    }
+
+    /**
+     * @param rbPokemon the rbPokemon to set
+     */
+    public final void setRbPokemon(JRadioButton rbPokemon) {
+        this.rbPokemon = rbPokemon;
+    }
+
+    /**
+     * @return the bCancelar
+     */
+    public final JButton getbCancelar() {
+        return bCancelar;
+    }
+
+    /**
+     * @param bCancelar the bCancelar to set
+     */
+    public final void setbCancelar(JButton bCancelar) {
+        this.bCancelar = bCancelar;
+    }
+
+    /**
+     * @return the bSiguiente
+     */
+    public final JButton getbSiguiente() {
+        return bSiguiente;
+    }
+
+    /**
+     * @param bSiguiente the bSiguiente to set
+     */
+    public final void setbSiguiente(JButton bSiguiente) {
+        this.bSiguiente = bSiguiente;
+    }
+
+    /**
+     * @return the sNumHabs
+     */
+    public final JSlider getsNumHabs() {
+        return sNumHabs;
+    }
+
+    /**
+     * @param sNumHabs the sNumHabs to set
+     */
+    public final void setsNumHabs(JSlider sNumHabs) {
+        this.sNumHabs = sNumHabs;
+    }
+
+    /**
+     * @return the lNumHabs
+     */
+    public final JLabel getlNumHabs() {
+        return lNumHabs;
+    }
+
+    /**
+     * @param lNumHabs the lNumHabs to set
+     */
+    public final void setlNumHabs(JLabel lNumHabs) {
+        this.lNumHabs = lNumHabs;
+    }
+
+    /**
+     * @return the cPCL
+     */
+    public final ControladorPCL getcPCL() {
+        return cPCL;
+    }
+
+    /**
+     * @param cPCL the cPCL to set
+     */
+    public final void setcPCL(ControladorPCL cPCL) {
+        this.cPCL = cPCL;
+    }
+
 }

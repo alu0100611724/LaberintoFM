@@ -4,16 +4,13 @@ package vista;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.border.TitledBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
+import controlador.ControladorPCH;
 
 /**
  * Esta ventana se llamara tantas veces como habitaciones se desee crear.
@@ -32,6 +29,7 @@ public class PanelConfigHab extends JFrame {
       // ATRIBUTOS
       //----------------------------------------
       private VentanaPrincipal vp;
+      private ControladorPCH cPCH;
 
       private JSlider sTam, sMonstruos;
       private JLabel lTam, lMonstruos;
@@ -46,6 +44,7 @@ public class PanelConfigHab extends JFrame {
        */
       public PanelConfigHab() {
           super(TITULO);
+          cPCH = new ControladorPCH(vp);
           inicializar();
       }
 
@@ -56,6 +55,7 @@ public class PanelConfigHab extends JFrame {
       public PanelConfigHab(VentanaPrincipal vPrincipal) {
           super(TITULO);
           vp = vPrincipal;
+          cPCH = new ControladorPCH(vp);
           inicializar();
       }
 
@@ -118,58 +118,10 @@ public class PanelConfigHab extends JFrame {
           pBotones.add(bSiguiente);
 
           // Set listeners
-          sTam.addChangeListener(new ChangeListener() {
-              @Override
-              public void stateChanged(ChangeEvent arg0) {
-                  if (sTam.getValue() < 10) {
-                      lTam.setText("0" + String.valueOf(sTam.getValue()));
-                  } else {
-                      lTam.setText(String.valueOf(sTam.getValue()));
-                  }
-                  // Controlamos que no existan mas monstruos que vacios.
-                  sMonstruos.setMaximum(sTam.getValue()-2);
-              }
-          });
-
-          sMonstruos.addChangeListener(new ChangeListener() {
-              @Override
-              public void stateChanged(ChangeEvent arg0) {
-                  if (sMonstruos.getValue() < 10) {
-                      lMonstruos.setText("0"
-                                  + String.valueOf(sMonstruos.getValue()));
-                  } else {
-                      lMonstruos.setText(String.valueOf(sMonstruos.getValue()));
-                  }
-              }
-          });
-
-          bSiguiente.addActionListener(new ActionListener() {
-              @Override
-              public void actionPerformed(ActionEvent arg0) {
-                  if (vp.getContHabs() < vp.getDirector().getNumHabs()) {
-                      vp.getDirector().crearHab(sTam.getValue(),
-                              sMonstruos.getValue());
-                      vp.getpCH().dispose();
-                      vp.setContHabs(vp.getContHabs() + 1);
-                      vp.setpCH(new PanelConfigHab(vp));
-                      vp.getpCH().setTitle("Hab: " + vp.getContHabs());
-                      vp.getpCH().setVisible(true);
-                  } else {
-                      vp.getDirector().crearHab(sTam.getValue(),
-                              sMonstruos.getValue());
-                      vp.getpCH().setVisible(false);
-                      vp.getpCC().setVisible(true);
-                  }
-
-              }
-          });
-
-          bCancelar.addActionListener(new ActionListener() {
-              @Override
-              public void actionPerformed(ActionEvent arg0) {
-                  dispose();
-              }
-          });
+          sTam.addChangeListener(cPCH);
+          sMonstruos.addChangeListener(cPCH);
+          bSiguiente.addActionListener(cPCH);
+          bCancelar.addActionListener(cPCH);
 
           // Agregando Paneles
           add(pTam);
@@ -179,5 +131,108 @@ public class PanelConfigHab extends JFrame {
           // Ajusta el tamano de la ventana a su contenido.
           pack();
       }
+
+    //----------------------------------------
+    // GETTERS Y SETTERS
+    //----------------------------------------
+
+    /**
+     * @return the sTam
+     */
+    public final JSlider getsTam() {
+        return sTam;
+    }
+
+    /**
+     * @param sTam the sTam to set
+     */
+    public final void setsTam(JSlider sTam) {
+        this.sTam = sTam;
+    }
+
+    /**
+     * @return the sMonstruos
+     */
+    public final JSlider getsMonstruos() {
+        return sMonstruos;
+    }
+
+    /**
+     * @param sMonstruos the sMonstruos to set
+     */
+    public final void setsMonstruos(JSlider sMonstruos) {
+        this.sMonstruos = sMonstruos;
+    }
+
+    /**
+     * @return the lTam
+     */
+    public final JLabel getlTam() {
+        return lTam;
+    }
+
+    /**
+     * @param lTam the lTam to set
+     */
+    public final void setlTam(JLabel lTam) {
+        this.lTam = lTam;
+    }
+
+    /**
+     * @return the lMonstruos
+     */
+    public final JLabel getlMonstruos() {
+        return lMonstruos;
+    }
+
+    /**
+     * @param lMonstruos the lMonstruos to set
+     */
+    public final void setlMonstruos(JLabel lMonstruos) {
+        this.lMonstruos = lMonstruos;
+    }
+
+    /**
+     * @return the bCancelar
+     */
+    public final JButton getbCancelar() {
+        return bCancelar;
+    }
+
+    /**
+     * @param bCancelar the bCancelar to set
+     */
+    public final void setbCancelar(JButton bCancelar) {
+        this.bCancelar = bCancelar;
+    }
+
+    /**
+     * @return the bSiguiente
+     */
+    public final JButton getbSiguiente() {
+        return bSiguiente;
+    }
+
+    /**
+     * @param bSiguiente the bSiguiente to set
+     */
+    public final void setbSiguiente(JButton bSiguiente) {
+        this.bSiguiente = bSiguiente;
+    }
+
+    /**
+     * @return the cPCH
+     */
+    public final ControladorPCH getcPCH() {
+        return cPCH;
+    }
+
+    /**
+     * @param cPCH the cPCH to set
+     */
+    public final void setcPCH(ControladorPCH cPCH) {
+        this.cPCH = cPCH;
+    }
+
   }
 

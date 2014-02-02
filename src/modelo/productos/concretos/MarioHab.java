@@ -31,7 +31,7 @@ public class MarioHab extends Habitacion {
      * Metodo Play.
      * Establece las reglas del juego.
      * @param dir Direccion a la que se desea mover.
-     * @return -1 => misma habitacion, -2 => game over, -3 => You Win y en
+     * @return -1 => misma habitacion, -2 => you win, -3 => You lose y en
      * otro caso el id de la nueva habitacionActual.
      */
     @Override
@@ -49,7 +49,7 @@ public class MarioHab extends Habitacion {
         case '#': // si es una puerta
             return (((Puerta) getElemento(p2)).getOtroLadoPuerta());
         case '&': //si encuentro a peach gano
-            return -3;
+            return -2;
         default:
             break;
         }
@@ -72,7 +72,7 @@ public class MarioHab extends Habitacion {
         if (vidas > 0) {
             return -1;
         } else {
-            return -2; //Sino GAME OVER.
+            return -3; //Sino GAME OVER.
         }
     }
 

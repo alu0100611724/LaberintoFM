@@ -3,24 +3,16 @@ package vista;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.io.IOException;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
-
+import controlador.ControladorVP;
 import modelo.builder.Builder;
 import modelo.builder.Director;
 import modelo.builder.JuegoMarioLabBuilder;
-import modelo.complementos.Posicion;
 import modelo.productos.Laberinto;
-
 
 /**
  * Ventana Principal de la Aplicacion.
@@ -47,12 +39,14 @@ public class VentanaPrincipal extends JFrame {
     private Laberinto laberinto;
     private int contHabs;
 
+    private ControladorVP cVP;
     private PanelConfigLab pCL;
     private PanelConfigHab pCH;
     private PanelConfigConexiones pCC;
 
     private JPanel pJuego;
     private JPanel pHabitacion;
+    private JButton bReset;
     private JButton bObjetivo;
     private JButton bCambiar;
     private JButton bGuardar;
@@ -76,10 +70,34 @@ public class VentanaPrincipal extends JFrame {
             e.printStackTrace();
         }
         contHabs = 1;
+        cVP = new ControladorVP(this);
+        inicializar();
+        //laberinto.play();
+    }
+    public VentanaPrincipal(Director dir, Laberinto lab) {
+        super(TITULO);
+        director = dir;
+        builder = dir.getBuilder();
+        laberinto = lab;
+        contHabs = 1;
+        cVP = new ControladorVP(this);
         inicializar();
         //laberinto.play();
     }
 
+    /**
+     * Construye La ventana con los valores por defecto.
+     */
+    public VentanaPrincipal(Director dir) {
+        super(TITULO);
+        director = dir;
+        builder = dir.getBuilder();
+        laberinto = builder.getLab();
+        contHabs = 1;
+        cVP = new ControladorVP(this);
+        inicializar();
+        //laberinto.play();
+    }
     /**
      * Construya la ventana principal con los valores deseados.
      * @param titulo Nombre de la ventana.
@@ -113,13 +131,18 @@ public class VentanaPrincipal extends JFrame {
         pCL = new PanelConfigLab(this);
         pCH = new PanelConfigHab(this);
         pCC = new PanelConfigConexiones(this);
-        repaint();
+        validate();
     }
 
+    /**
+     * Metodo para pintar la habitacion en la ventana.
+     * @param pHab Panel donde se pinta la habitacion
+     */
     public final void pintarLab(JPanel pHab) {
         int tamHabActual = laberinto.getHabI(laberinto.getHabActual()).getTam();
         pHab.setLayout(new GridLayout(tamHabActual, tamHabActual, 0, 0));
-        pHab.setBorder(new TitledBorder("Mario Bros."));
+        pHab.setBorder(new TitledBorder("Habitacion 0"
+                                        + (laberinto.getHabActual() + 1)));
         for (int i = 0; i < tamHabActual; i++) {
             for (int j = 0; j < tamHabActual; j++) {
                 pHab.add(new JLabel("" + laberinto.pintarVentana(i, j)));
@@ -145,11 +168,12 @@ public class VentanaPrincipal extends JFrame {
 
         // Panel Botones
         JPanel pMenu = new JPanel();
-        pMenu.setLayout(new GridLayout(6, 1));
+        pMenu.setLayout(new GridLayout(7, 1));
         pMenu.add(bObjetivo = new JButton("Objetivos"));
         pMenu.add(bCambiar = new JButton("Cambiar Laberinto"));
         pMenu.add(bGuardar = new JButton("Guardar"));
         pMenu.add(bCargar = new JButton("Cargar"));
+        pMenu.add(bReset = new JButton("Reiniciar"));
         pMenu.add(bAbout = new JButton("About MazeMaker"));
         pMenu.add(bSalir = new JButton("Salir"));
 
@@ -160,8 +184,7 @@ public class VentanaPrincipal extends JFrame {
         // Panel que indica el Estado del juego.
         JPanel pEstadoJuego = new JPanel();
         pEstadoJuego.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
-        pEstadoJuego.add(new JLabel("Vidas: ")); // Cambia vidas por pokemons de acuerdo al modo de juego
-        pEstadoJuego.add(new JLabel("X"));
+        pEstadoJuego.add(new JLabel("¿Listo para Jugar?"));
 
         // Panel que combina la habitacion con el estado del juego
         pJuego = new JPanel();
@@ -177,49 +200,10 @@ public class VentanaPrincipal extends JFrame {
         pack();
 
         // Listeners (Actions & Keys)
-        this.addKeyListener(new KeyAdapter() {
-            public void keyPressed(KeyEvent e) {
-                switch (e.getKeyCode()) {
-                  case KeyEvent.VK_DOWN: laberinto.play('s');
-                  laberinto.pintar();
-                  break;
-                  case KeyEvent.VK_UP: laberinto.play('w');
-                  laberinto.pintar();
-                  break;
-                  case KeyEvent.VK_LEFT: laberinto.play('a');
-                  laberinto.pintar();
-                  break;
-                  case KeyEvent.VK_RIGHT: laberinto.play('d');
-                  laberinto.pintar();
-                  break;
-                  default: //do nothing
-                }
-                pJuego.removeAll();
-                pHabitacion = new JPanel();
-                pintarLab(pHabitacion);
-                JPanel pEstadoJuego = new JPanel();
-                pEstadoJuego.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
-                pEstadoJuego.add(new JLabel("Vidas: ")); // Cambia vidas por pokemons de acuerdo al modo de juego
-                pEstadoJuego.add(new JLabel("X"));
-                pJuego.add(pHabitacion, BorderLayout.CENTER);
-                pJuego.add(pEstadoJuego, BorderLayout.SOUTH);
-                validate();
-            }
-        });
-
-        bCambiar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-              pCL.setVisible(true);
-            }
-        });
-
-        bSalir.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-              dispose();
-            }
-        });
+        this.addKeyListener(cVP);
+        bCambiar.addActionListener(cVP);
+        bReset.addActionListener(cVP);
+        bSalir.addActionListener(cVP);
     }
 
     //----------------------------------------
@@ -335,6 +319,116 @@ public class VentanaPrincipal extends JFrame {
      */
     public final void setPHabitacion(JPanel pHabitacion) {
         this.pHabitacion = pHabitacion;
+    }
+
+    /**
+     * @return the pJuego
+     */
+    public final JPanel getPJuego() {
+        return pJuego;
+    }
+
+    /**
+     * @param pJuego the pJuego to set
+     */
+    public final void setPJuego(JPanel pJuego) {
+        this.pJuego = pJuego;
+    }
+    /**
+     * @return the bReset
+     */
+    public final JButton getbReset() {
+        return bReset;
+    }
+    /**
+     * @param bReset the bReset to set
+     */
+    public final void setbReset(JButton bReset) {
+        this.bReset = bReset;
+    }
+    /**
+     * @return the bObjetivo
+     */
+    public final JButton getbObjetivo() {
+        return bObjetivo;
+    }
+    /**
+     * @param bObjetivo the bObjetivo to set
+     */
+    public final void setbObjetivo(JButton bObjetivo) {
+        this.bObjetivo = bObjetivo;
+    }
+    /**
+     * @return the bCambiar
+     */
+    public final JButton getbCambiar() {
+        return bCambiar;
+    }
+    /**
+     * @param bCambiar the bCambiar to set
+     */
+    public final void setbCambiar(JButton bCambiar) {
+        this.bCambiar = bCambiar;
+    }
+    /**
+     * @return the bGuardar
+     */
+    public final JButton getbGuardar() {
+        return bGuardar;
+    }
+    /**
+     * @param bGuardar the bGuardar to set
+     */
+    public final void setbGuardar(JButton bGuardar) {
+        this.bGuardar = bGuardar;
+    }
+    /**
+     * @return the bCargar
+     */
+    public final JButton getbCargar() {
+        return bCargar;
+    }
+    /**
+     * @param bCargar the bCargar to set
+     */
+    public final void setbCargar(JButton bCargar) {
+        this.bCargar = bCargar;
+    }
+    /**
+     * @return the bAbout
+     */
+    public final JButton getbAbout() {
+        return bAbout;
+    }
+    /**
+     * @param bAbout the bAbout to set
+     */
+    public final void setbAbout(JButton bAbout) {
+        this.bAbout = bAbout;
+    }
+    /**
+     * @return the bSalir
+     */
+    public final JButton getbSalir() {
+        return bSalir;
+    }
+    /**
+     * @param bSalir the bSalir to set
+     */
+    public final void setbSalir(JButton bSalir) {
+        this.bSalir = bSalir;
+    }
+    /**
+     * @return the cVP
+     */
+    public final ControladorVP getcVP() {
+        return cVP;
+    }
+    /**
+     * @param cVP the cVP to set
+     */
+    public final void setcVP(ControladorVP cVP) {
+        this.cVP = cVP;
     }
 
 }

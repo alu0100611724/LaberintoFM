@@ -4,9 +4,6 @@ package vista;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,8 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSlider;
 import javax.swing.border.TitledBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
+import controlador.ControladorPCC;
 
 /**
  * Panel de configuracion de Las comunicaciones entre las habitaciones.
@@ -36,6 +32,7 @@ public class PanelConfigConexiones extends JFrame {
      * Ventana Principal de la Aplicacion.
      */
     private VentanaPrincipal vp;
+    private ControladorPCC cPCC;
 
     private JRadioButton oN, oS, oE, oO, dN, dS, dE, dO;
     private JSlider sHabO, sHabD;
@@ -52,6 +49,7 @@ public class PanelConfigConexiones extends JFrame {
     public PanelConfigConexiones() {
         super(TITULO);
         vp = new VentanaPrincipal();
+        cPCC = new ControladorPCC(vp);
         inicializar();
     }
 
@@ -62,6 +60,7 @@ public class PanelConfigConexiones extends JFrame {
     public PanelConfigConexiones(VentanaPrincipal vPrincipal) {
         super(TITULO);
         vp = vPrincipal;
+        cPCC = new ControladorPCC(vp);
         inicializar();
     }
 
@@ -170,70 +169,10 @@ public class PanelConfigConexiones extends JFrame {
         p5.add(bFin);
 
         // Set listeners
-        sHabO.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent arg0) {
-                if (sHabO.getValue() < 10) {
-                    lHabO.setText("0"
-                                + String.valueOf(sHabO.getValue()));
-                } else {
-                    lHabO.setText(String.valueOf(sHabO.getValue()));
-                }
-            }
-        });
-
-        sHabD.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent arg0) {
-                if (sHabD.getValue() < 10) {
-                    lHabD.setText("0"
-                                + String.valueOf(sHabD.getValue()));
-                } else {
-                    lHabD.setText(String.valueOf(sHabD.getValue()));
-                }
-            }
-        });
-
-        bFin.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                //fijamos valores por defecto
-                vp.getDirector().setPuertaOrigin(1);
-                vp.getDirector().setPuertaDest(1);
-
-                if (oN.isEnabled()) {
-                    vp.getDirector().setPuertaOrigin(1);
-                }
-                if (oS.isEnabled()) {
-                    vp.getDirector().setPuertaOrigin(2);
-                }
-                if (oE.isEnabled()) {
-                    vp.getDirector().setPuertaOrigin(3);
-                }
-                if (oO.isEnabled()) {
-                    vp.getDirector().setPuertaOrigin(4);
-                }
-                if (dN.isEnabled()) {
-                    vp.getDirector().setPuertaDest(1);
-                }
-                if (dS.isEnabled()) {
-                    vp.getDirector().setPuertaDest(2);
-                }
-                if (dE.isEnabled()) {
-                    vp.getDirector().setPuertaDest(3);
-                }
-                if (dO.isEnabled()) {
-                    vp.getDirector().setPuertaDest(4);
-                }
-
-                vp.getDirector().crearConexion((sHabO.getValue() - 1),
-                        vp.getDirector().getPuertaOrigin(),
-                        (sHabD.getValue() - 1),
-                        vp.getDirector().getPuertaDest());
-                vp.getDirector().habActual(0);
-                vp.resetVentanas();
-            }
-        });
+        sHabO.addChangeListener(cPCC);
+        sHabD.addChangeListener(cPCC);
+        bFin.addActionListener(cPCC);
+        bOtra.addActionListener(cPCC);
 
         // Agregando Paneles
         add(p1);
@@ -249,5 +188,220 @@ public class PanelConfigConexiones extends JFrame {
         // Ajusta el tamano de la ventana a su contenido.
         pack();
     }
+
+    //----------------------------------------
+    // GETTERS Y SETTERS
+    //----------------------------------------
+
+    /**
+     * @return the oN
+     */
+    public final JRadioButton getoN() {
+        return oN;
+    }
+
+    /**
+     * @param oN the oN to set
+     */
+    public final void setoN(JRadioButton oN) {
+        this.oN = oN;
+    }
+
+    /**
+     * @return the oS
+     */
+    public final JRadioButton getoS() {
+        return oS;
+    }
+
+    /**
+     * @param oS the oS to set
+     */
+    public final void setoS(JRadioButton oS) {
+        this.oS = oS;
+    }
+
+    /**
+     * @return the oE
+     */
+    public final JRadioButton getoE() {
+        return oE;
+    }
+
+    /**
+     * @param oE the oE to set
+     */
+    public final void setoE(JRadioButton oE) {
+        this.oE = oE;
+    }
+
+    /**
+     * @return the oO
+     */
+    public final JRadioButton getoO() {
+        return oO;
+    }
+
+    /**
+     * @param oO the oO to set
+     */
+    public final void setoO(JRadioButton oO) {
+        this.oO = oO;
+    }
+
+    /**
+     * @return the dN
+     */
+    public final JRadioButton getdN() {
+        return dN;
+    }
+
+    /**
+     * @param dN the dN to set
+     */
+    public final void setdN(JRadioButton dN) {
+        this.dN = dN;
+    }
+
+    /**
+     * @return the dS
+     */
+    public final JRadioButton getdS() {
+        return dS;
+    }
+
+    /**
+     * @param dS the dS to set
+     */
+    public final void setdS(JRadioButton dS) {
+        this.dS = dS;
+    }
+
+    /**
+     * @return the dE
+     */
+    public final JRadioButton getdE() {
+        return dE;
+    }
+
+    /**
+     * @param dE the dE to set
+     */
+    public final void setdE(JRadioButton dE) {
+        this.dE = dE;
+    }
+
+    /**
+     * @return the dO
+     */
+    public final JRadioButton getdO() {
+        return dO;
+    }
+
+    /**
+     * @param dO the dO to set
+     */
+    public final void setdO(JRadioButton dO) {
+        this.dO = dO;
+    }
+
+    /**
+     * @return the sHabO
+     */
+    public final JSlider getsHabO() {
+        return sHabO;
+    }
+
+    /**
+     * @param sHabO the sHabO to set
+     */
+    public final void setsHabO(JSlider sHabO) {
+        this.sHabO = sHabO;
+    }
+
+    /**
+     * @return the sHabD
+     */
+    public final JSlider getsHabD() {
+        return sHabD;
+    }
+
+    /**
+     * @param sHabD the sHabD to set
+     */
+    public final void setsHabD(JSlider sHabD) {
+        this.sHabD = sHabD;
+    }
+
+    /**
+     * @return the lHabO
+     */
+    public final JLabel getlHabO() {
+        return lHabO;
+    }
+
+    /**
+     * @param lHabO the lHabO to set
+     */
+    public final void setlHabO(JLabel lHabO) {
+        this.lHabO = lHabO;
+    }
+
+    /**
+     * @return the lHabD
+     */
+    public final JLabel getlHabD() {
+        return lHabD;
+    }
+
+    /**
+     * @param lHabD the lHabD to set
+     */
+    public final void setlHabD(JLabel lHabD) {
+        this.lHabD = lHabD;
+    }
+
+    /**
+     * @return the bOtra
+     */
+    public final JButton getbOtra() {
+        return bOtra;
+    }
+
+    /**
+     * @param bOtra the bOtra to set
+     */
+    public final void setbOtra(JButton bOtra) {
+        this.bOtra = bOtra;
+    }
+
+    /**
+     * @return the bFin
+     */
+    public final JButton getbFin() {
+        return bFin;
+    }
+
+    /**
+     * @param bFin the bFin to set
+     */
+    public final void setbFin(JButton bFin) {
+        this.bFin = bFin;
+    }
+
+    /**
+     * @return the cPCC
+     */
+    public final ControladorPCC getcPCC() {
+        return cPCC;
+    }
+
+    /**
+     * @param cPCC the cPCC to set
+     */
+    public final void setcPCC(ControladorPCC cPCC) {
+        this.cPCC = cPCC;
+    }
+
 }
 
