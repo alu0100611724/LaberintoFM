@@ -43,11 +43,11 @@ public class VentanaPrincipal extends JFrame {
     private PanelConfigLab pCL;
     private PanelConfigHab pCH;
     private PanelConfigConexiones pCC;
+    private VentanaAbout vA;
 
     private JPanel pJuego;
     private JPanel pHabitacion;
     private JButton bReset;
-    private JButton bObjetivo;
     private JButton bCambiar;
     private JButton bGuardar;
     private JButton bCargar;
@@ -131,6 +131,7 @@ public class VentanaPrincipal extends JFrame {
         pCL = new PanelConfigLab(this);
         pCH = new PanelConfigHab(this);
         pCC = new PanelConfigConexiones(this);
+        vA = new VentanaAbout();
         validate();
     }
 
@@ -165,11 +166,11 @@ public class VentanaPrincipal extends JFrame {
         pCL = new PanelConfigLab(this);
         pCH = new PanelConfigHab(this);
         pCC = new PanelConfigConexiones(this);
+        vA = new VentanaAbout();
 
         // Panel Botones
         JPanel pMenu = new JPanel();
-        pMenu.setLayout(new GridLayout(7, 1));
-        pMenu.add(bObjetivo = new JButton("Objetivos"));
+        pMenu.setLayout(new GridLayout(6, 1));
         pMenu.add(bCambiar = new JButton("Cambiar Laberinto"));
         pMenu.add(bGuardar = new JButton("Guardar"));
         pMenu.add(bCargar = new JButton("Cargar"));
@@ -203,6 +204,7 @@ public class VentanaPrincipal extends JFrame {
         this.addKeyListener(cVP);
         bCambiar.addActionListener(cVP);
         bReset.addActionListener(cVP);
+        bAbout.addActionListener(cVP);
         bSalir.addActionListener(cVP);
     }
 
@@ -347,18 +349,6 @@ public class VentanaPrincipal extends JFrame {
         this.bReset = bReset;
     }
     /**
-     * @return the bObjetivo
-     */
-    public final JButton getbObjetivo() {
-        return bObjetivo;
-    }
-    /**
-     * @param bObjetivo the bObjetivo to set
-     */
-    public final void setbObjetivo(JButton bObjetivo) {
-        this.bObjetivo = bObjetivo;
-    }
-    /**
      * @return the bCambiar
      */
     public final JButton getbCambiar() {
@@ -429,6 +419,18 @@ public class VentanaPrincipal extends JFrame {
      */
     public final void setcVP(ControladorVP cVP) {
         this.cVP = cVP;
+    }
+    /**
+     * @return the vA
+     */
+    public final VentanaAbout getvA() {
+        return vA;
+    }
+    /**
+     * @param vA the vA to set
+     */
+    public final void setvA(VentanaAbout vA) {
+        this.vA = vA;
     }
 
 }

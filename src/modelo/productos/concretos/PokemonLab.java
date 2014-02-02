@@ -67,13 +67,14 @@ public class PokemonLab extends Laberinto {
     public int play(char key) {
         int estado = -1;
 
-        estado = habitaciones.get(habActual).play(key);
+            estado = habitaciones.get(habActual).play(key);
 
-        switch(estado) {
-            case -1:                     //misma hab
-            case -2: break;              //ganaste
-            default: habActual = estado; //cambia habActual
-        }
+            switch(estado) {
+                case -1:                     //misma hab
+                case -2: break;              //ganaste
+                default: habActual = estado; //cambia habActual
+            }
+
         return estado;
     }
 }

@@ -152,11 +152,12 @@ public class Laberinto implements Serializable {
 
         estado = habitaciones.get(habActual).play(key);
 
-        switch(estado) {
-            case -1:                     //misma hab
-            case -2: break;              //you win
-            default: habActual = estado; //cambia habActual
-        }
+            switch(estado) {
+                case -1:                     //misma hab
+                case -2: break;              //you win
+                default: habActual = estado; //cambia habActual
+            }
+
         return estado;
     }
 

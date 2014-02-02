@@ -6,8 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import vista.VentanaAbout;
 import vista.VentanaPrincipal;
 import modelo.productos.concretos.MarioHab;
 import modelo.productos.concretos.PokemonHab;
@@ -28,6 +31,8 @@ public class ControladorVP implements ActionListener, KeyListener {
             VentanaPrincipal v = new VentanaPrincipal();
             v.setFocusable(true);
             v.revalidate();
+        } else if (ae.getSource() == vp.getbAbout()) {
+            vp.getvA().setVisible(true);
         } else if (ae.getSource() == vp.getbSalir()) {
             vp.dispose();
         }
@@ -35,6 +40,8 @@ public class ControladorVP implements ActionListener, KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int result = -1;
+
+
         switch (e.getKeyCode()) {
           case KeyEvent.VK_DOWN: result = vp.getLaberinto().play('s');
           //vp.getLaberinto().pintar();
@@ -55,23 +62,27 @@ public class ControladorVP implements ActionListener, KeyListener {
         vp.pintarLab(vp.getPHabitacion());
         JPanel pEstadoJuego = new JPanel();
         pEstadoJuego.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
-        if (result == -2) {
+        switch (result) {
+        case -2:
             pEstadoJuego.add(new JLabel("CONGRATS! YOU WIN."));
-
-        } else if (result == -3) {
+            break;
+        case -3:
             pEstadoJuego.add(new JLabel("SORRY. YOU LOSE!"));
-
-        } else if (vp.getLaberinto().getTipo().equalsIgnoreCase("Mario")) {
-            pEstadoJuego.add(new JLabel("Mario Bros. Vidas: "
-                                        + MarioHab.getVidas()));
-            vp.getPJuego().add(vp.getPHabitacion(), BorderLayout.CENTER);
-        } else if (vp.getLaberinto().getTipo().equalsIgnoreCase("Pokemon")) {
-            pEstadoJuego.add(new JLabel("Pokemons: "
-                             + PokemonHab.getPokemonCont()));
-            vp.getPJuego().add(vp.getPHabitacion(), BorderLayout.CENTER);
+            break;
+        default:
+            if (vp.getLaberinto().getTipo().equalsIgnoreCase("Mario")) {
+                pEstadoJuego.add(new JLabel("Mario Bros. Vidas: "
+                                            + MarioHab.getVidas()));
+                vp.getPJuego().add(vp.getPHabitacion(), BorderLayout.CENTER);
+            } else if (vp.getLaberinto().getTipo().equalsIgnoreCase("Pokemon")) {
+                pEstadoJuego.add(new JLabel("Pokemons: "
+                                 + PokemonHab.getPokemonCont()));
+                vp.getPJuego().add(vp.getPHabitacion(), BorderLayout.CENTER);
+            }
         }
         vp.getPJuego().add(pEstadoJuego, BorderLayout.SOUTH);
         vp.validate();
+
     }
     @Override
     public void keyReleased(KeyEvent e) {
