@@ -57,32 +57,32 @@ public class ControladorPCC implements ActionListener, ChangeListener {
             vp.getpCC().setMaxSHabD(vp.getDirector().getNumHabs());
             vp.getpCC().setVisible(true);
             //fijamos valores por defecto
-            vp.getDirector().setPuertaOrigin(1);
-            vp.getDirector().setPuertaDest(1);
+            vp.getDirector().setPuertaOrigin(3);
+            vp.getDirector().setPuertaDest(3);
 
             if (vp.getpCC().getoN().isEnabled()) {
-                vp.getDirector().setPuertaOrigin(1);
-            }
-            if (vp.getpCC().getoS().isEnabled()) {
-                vp.getDirector().setPuertaOrigin(2);
-            }
-            if (vp.getpCC().getoE().isEnabled()) {
                 vp.getDirector().setPuertaOrigin(3);
             }
-            if (vp.getpCC().getoO().isEnabled()) {
+            if (vp.getpCC().getoS().isEnabled()) {
                 vp.getDirector().setPuertaOrigin(4);
             }
+            if (vp.getpCC().getoE().isEnabled()) {
+                vp.getDirector().setPuertaOrigin(2);
+            }
+            if (vp.getpCC().getoO().isEnabled()) {
+                vp.getDirector().setPuertaOrigin(1);
+            }
             if (vp.getpCC().getdN().isEnabled()) {
-                vp.getDirector().setPuertaDest(1);
-            }
-            if (vp.getpCC().getdS().isEnabled()) {
-                vp.getDirector().setPuertaDest(2);
-            }
-            if (vp.getpCC().getdE().isEnabled()) {
                 vp.getDirector().setPuertaDest(3);
             }
-            if (vp.getpCC().getdO().isEnabled()) {
+            if (vp.getpCC().getdS().isEnabled()) {
                 vp.getDirector().setPuertaDest(4);
+            }
+            if (vp.getpCC().getdE().isEnabled()) {
+                vp.getDirector().setPuertaDest(2);
+            }
+            if (vp.getpCC().getdO().isEnabled()) {
+                vp.getDirector().setPuertaDest(1);
             }
 
             // creamos ultima habitacion
@@ -96,32 +96,32 @@ public class ControladorPCC implements ActionListener, ChangeListener {
         } else if (e.getSource() == vp.getpCC().getbFin()) {
 
             //fijamos valores por defecto
-            vp.getDirector().setPuertaOrigin(1);
-            vp.getDirector().setPuertaDest(1);
+            vp.getDirector().setPuertaOrigin(3);
+            vp.getDirector().setPuertaDest(3);
 
             if (vp.getpCC().getoN().isEnabled()) {
-                vp.getDirector().setPuertaOrigin(1);
-            }
-            if (vp.getpCC().getoS().isEnabled()) {
-                vp.getDirector().setPuertaOrigin(2);
-            }
-            if (vp.getpCC().getoE().isEnabled()) {
                 vp.getDirector().setPuertaOrigin(3);
             }
-            if (vp.getpCC().getoO().isEnabled()) {
+            if (vp.getpCC().getoS().isEnabled()) {
                 vp.getDirector().setPuertaOrigin(4);
             }
+            if (vp.getpCC().getoE().isEnabled()) {
+                vp.getDirector().setPuertaOrigin(2);
+            }
+            if (vp.getpCC().getoO().isEnabled()) {
+                vp.getDirector().setPuertaOrigin(1);
+            }
             if (vp.getpCC().getdN().isEnabled()) {
-                vp.getDirector().setPuertaDest(1);
-            }
-            if (vp.getpCC().getdS().isEnabled()) {
-                vp.getDirector().setPuertaDest(2);
-            }
-            if (vp.getpCC().getdE().isEnabled()) {
                 vp.getDirector().setPuertaDest(3);
             }
-            if (vp.getpCC().getdO().isEnabled()) {
+            if (vp.getpCC().getdS().isEnabled()) {
                 vp.getDirector().setPuertaDest(4);
+            }
+            if (vp.getpCC().getdE().isEnabled()) {
+                vp.getDirector().setPuertaDest(2);
+            }
+            if (vp.getpCC().getdO().isEnabled()) {
+                vp.getDirector().setPuertaDest(1);
             }
 
             // creamos ultima habitacion

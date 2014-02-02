@@ -1,4 +1,4 @@
-JUEGO DEL LABERINTO - Version 4.2.2
+JUEGO DEL LABERINTO - Version 4.2.3
 
 Este programa es un juego diseñado para la clase de Diseño de Patrones Arquitectónicos.
 Para su implementacion se utilizan las siguientes herramientas:
@@ -12,3 +12,5 @@ Para su implementacion se utilizan las siguientes herramientas:
 * PMD.
 * FindBugs.
 * Github.
+* Eclipse.
+* Android SDK.
