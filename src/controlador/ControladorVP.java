@@ -6,12 +6,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.beans.PropertyVetoException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
+import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import vista.VentanaAbout;
 import vista.VentanaPrincipal;
+import modelo.builder.Director;
+import modelo.productos.Laberinto;
 import modelo.productos.concretos.MarioHab;
 import modelo.productos.concretos.PokemonHab;
 
@@ -31,6 +42,45 @@ public class ControladorVP implements ActionListener, KeyListener {
             VentanaPrincipal v = new VentanaPrincipal();
             v.setFocusable(true);
             v.revalidate();
+        } else if (ae.getSource() == vp.getbCargar()) {
+            JFileChooser selector = new JFileChooser(); 
+            int retrival = selector.showOpenDialog(null);
+            if (retrival == JFileChooser.APPROVE_OPTION) {
+                try {
+                    FileInputStream fis = new FileInputStream(selector.getSelectedFile());
+                    ObjectInputStream entrada = new ObjectInputStream(fis);
+                    Director d = (Director) entrada.readObject();
+                    Laberinto l = (Laberinto) entrada.readObject();
+                    
+                    VentanaPrincipal v = new VentanaPrincipal(d, l);
+                    vp.dispose();
+                    v.setFocusable(true);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            } else {
+                vp.validate();
+                vp.setFocusable(true);
+            }
+        } else if (ae.getSource() == vp.getbGuardar()) {
+            JFileChooser selector = new JFileChooser(); 
+            int retrival = selector.showSaveDialog(null);
+            if (retrival == JFileChooser.APPROVE_OPTION) {
+                try {
+                    FileOutputStream fos = new FileOutputStream(selector.getSelectedFile());
+                    ObjectOutputStream salida = new ObjectOutputStream(fos);
+                    salida.writeObject(vp.getDirector());
+                    salida.writeObject(vp.getLaberinto());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            vp.validate();
+            vp.setFocusable(true);
+
         } else if (ae.getSource() == vp.getbAbout()) {
             vp.getvA().setVisible(true);
         } else if (ae.getSource() == vp.getbSalir()) {

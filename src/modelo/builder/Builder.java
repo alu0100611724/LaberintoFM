@@ -1,6 +1,8 @@
 
 package modelo.builder;
 
+import java.io.Serializable;
+
 import modelo.productos.Laberinto;
 
 /**
@@ -8,7 +10,7 @@ import modelo.productos.Laberinto;
  * @author Mauri
  *
  */
-public abstract class Builder {
+public abstract class Builder implements Serializable {
 
     /**
      * Fabrica el Laberinto (Producto).

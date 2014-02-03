@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
 import modelo.complementos.Fichero;
 import modelo.productos.Laberinto;
 
@@ -16,7 +18,7 @@ import modelo.productos.Laberinto;
  * @author Mauri
  *
  */
-public class Director {
+public class Director implements Serializable {
 
     /**
      * Numero de Habitaciones.

@@ -210,6 +210,8 @@ public class VentanaPrincipal extends JFrame {
         bReset.addActionListener(cVP);
         bAbout.addActionListener(cVP);
         bSalir.addActionListener(cVP);
+        bGuardar.addActionListener(cVP);
+        bCargar.addActionListener(cVP);
     }
 
     //----------------------------------------
