@@ -118,7 +118,7 @@ public class Habitacion implements Serializable {
     /**
      * Agrega 4 puertas a la habitacion.
      */
-    public final void addPuertas() {
+    public void addPuertas() {
         tablero[tam / 2][tam - 1] = new Puerta();
         tablero[tam / 2][0] = new Puerta();
         tablero[tam - 1][tam / 2] = new Puerta();

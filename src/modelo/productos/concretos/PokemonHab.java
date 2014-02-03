@@ -5,6 +5,7 @@ import modelo.complementos.NumAleatorio;
 import modelo.complementos.Posicion;
 import modelo.productos.Habitacion;
 import modelo.productos.LugarHab;
+import modelo.productos.Pared;
 import modelo.productos.Personaje;
 import modelo.productos.Puerta;
 
@@ -25,8 +26,31 @@ public class PokemonHab extends Habitacion {
      */
     public PokemonHab(final int size) {
         super(size);
+        tablero = new LugarHab[tam][tam];
+        for (int i = 0; i < tam; i++) {
+            for (int j = 0; j < tam; j++) {
+                if ((i != 0) && (j != 0) && (i != tam - 1) && (j != tam - 1)) {
+                    tablero[i][j] = new LugarHab();
+                } else {
+                    Pared p = new Pared();
+                    p.setRutaImg("images/paredPokemon.png");
+                    tablero[i][j] = p;
+                }
+            }
+        }
     }
 
+    /**
+     * Agrega 4 puertas a la habitacion.
+     */
+    public final void addPuertas() {
+        Puerta p = new Puerta();
+        p.setRutaImg("images/puertaPokemon.png");
+        tablero[tam / 2][tam - 1] = p;
+        tablero[tam / 2][0] = p;
+        tablero[tam - 1][tam / 2] = p;
+        tablero[0][tam / 2] = p;
+    }
     /**
      * Agregar Personaje.
      * Si se agrega un pokemon, se incrementa el contador.
@@ -47,6 +71,8 @@ public class PokemonHab extends Habitacion {
         setElemento(p, posicion);
         if (p.getImagen() == 'P') {
             pokemonCont++;
+        } else if (p.getImagen() == '@') {
+            p.setRutaImg("images/ash.png");
         }
     }
 
