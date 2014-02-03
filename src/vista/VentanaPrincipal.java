@@ -3,11 +3,14 @@ package vista;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
+
 import controlador.ControladorVP;
 import modelo.builder.Builder;
 import modelo.builder.Director;
@@ -146,7 +149,8 @@ public class VentanaPrincipal extends JFrame {
                                         + (laberinto.getHabActual() + 1)));
         for (int i = 0; i < tamHabActual; i++) {
             for (int j = 0; j < tamHabActual; j++) {
-                pHab.add(new JLabel("" + laberinto.pintarVentana(i, j)));
+                ImageIcon img = new ImageIcon(laberinto.pintarVentana(i, j));
+                pHab.add(new JLabel(img));
             }
         }
     }

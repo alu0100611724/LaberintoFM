@@ -19,6 +19,8 @@ public class LugarHab implements Serializable {
      */
     private char imagen;
 
+    private String rutaImg;
+
     /**
      * @return the imagen
      */
@@ -34,6 +36,20 @@ public class LugarHab implements Serializable {
     }
 
     /**
+     * @return the rutaImg
+     */
+    public final String getRutaImg() {
+        return rutaImg;
+    }
+
+    /**
+     * @param rutaImg the rutaImg to set
+     */
+    public final void setRutaImg(String rutaImg) {
+        this.rutaImg = rutaImg;
+    }
+
+    /**
      * Constructor que recibe la imagen del elemento.
      * @param i imagen caracter que representa al elemento.
      */
@@ -46,5 +62,6 @@ public class LugarHab implements Serializable {
      */
     public LugarHab() {
         this.imagen = ' ';
+        this.rutaImg = "images/vacio.png";
     }
 }

@@ -14,5 +14,6 @@ public class Koopa extends Monstruo {
      */
     public Koopa() {
         setImagen('K');
+        setRutaImg("images/koopa.png");
     }
 }

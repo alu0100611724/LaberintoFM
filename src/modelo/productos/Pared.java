@@ -12,6 +12,7 @@ public class Pared extends LugarHab {
      */
     public Pared() {
         super('+');
+        setRutaImg("images/bloque.png");
     }
 
 }

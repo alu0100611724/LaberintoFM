@@ -14,5 +14,6 @@ public class Pokemon extends Monstruo {
      */
     public Pokemon() {
         setImagen('P');
+        setRutaImg("images/pikachu.png");
     }
 }

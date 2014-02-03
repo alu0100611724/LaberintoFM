@@ -107,9 +107,9 @@ public class Laberinto implements Serializable {
      * @param j Columna.
      * @return la imagen del elemento en la posicion i, j.
      */
-    public final char pintarVentana(int i, int j) {
-        return habitaciones.get(habActual).getElemento(
-                                                new Posicion(i, j)).getImagen();
+    public final String pintarVentana(int i, int j) {
+        return habitaciones.get(habActual).getElemento(new Posicion(
+                                                        i, j)).getRutaImg();
     }
     /**
      * Este metodo implementa la jugabilidad en el laberinto.

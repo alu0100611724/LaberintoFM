@@ -52,13 +52,13 @@ public class VentanaAbout extends JFrame {
 
         String contenido = "\nMazeMaker - Version: 4.2.1\n\n" 
                 + "MazeMaker es un framework que permite diseñar y construir\n"
-                + "laberintos, para posteriormete, jugar en ellos.\n\n"
-                + "Los laberintos estan formados por habitaciones con 4 purtas"
+                + "laberintos, para posteriormente, jugar en ellos.\n\n"
+                + "Los laberintos estan formados por habitaciones con 4 puertas"
                 + "\nque comunican o no con otra habitacion. Solo se mostrara"
-                + "\nla abitacion actual en la que se encuentre el jugador.\n"
+                + "\nla habitacion actual en la que se encuentre el jugador.\n"
                 + "\nSe incluyen dos tipos de laberintos como muestra:\n\n"
                 + "- Laberinto Pokemon: Donde deberas que capturar todos los\n"
-                + "pokemons salvajes para convertirte en un mastro pokemon.\n\n"
+                + "pokemons salvajes para convertirte en un maestro pokemon.\n\n"
                 + "- Laberinto Mario: Donde deberas rescatar a peach, evitando "
                 + "\n  las koopas.\n\n"
                 + "Autor: Maurizio A. Rendon M.\n";

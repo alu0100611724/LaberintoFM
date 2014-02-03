@@ -20,6 +20,7 @@ public class Puerta extends LugarHab {
      */
     public Puerta() {
         super('#');
+        setRutaImg("images/puertaMario.png");
         this.otroLadoPuerta = -1;
     }
 

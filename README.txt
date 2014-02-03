@@ -1,4 +1,4 @@
-JUEGO DEL LABERINTO - Version 4.2.3
+JUEGO DEL LABERINTO - Version 4.3.1
 
 Este programa es un juego diseñado para la clase de Diseño de Patrones Arquitectónicos.
 Para su implementacion se utilizan las siguientes herramientas:

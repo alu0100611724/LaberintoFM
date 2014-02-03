@@ -76,4 +76,12 @@ public class ParedTest {
         assertEquals('#', pared.getImagen());
     }
 
+    /**
+     * Test method for {@link modelo.productos.LugarHab#setImagen(char)}.
+     */
+    @Test
+    public final void testGetRutaImg() {
+        assertEquals("images/bloque.png", pared.getRutaImg());
+    }
+
 }

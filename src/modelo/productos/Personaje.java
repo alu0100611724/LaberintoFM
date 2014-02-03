@@ -26,6 +26,7 @@ public class Personaje extends LugarHab {
      */
     public Personaje() {
         super('&');
+        setRutaImg("images/peach.png");
         c = new ComportamientoZombie();
         pos = new Posicion(1, 1);
     }
@@ -36,6 +37,7 @@ public class Personaje extends LugarHab {
      */
     public Personaje(final IComportamiento comp) {
         super('&');
+        setRutaImg("images/peach.png");
         c = comp;
         pos = new Posicion(1, 1);
     }

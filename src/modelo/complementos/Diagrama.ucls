@@ -219,7 +219,7 @@
   </class>  
   <class id="25" language="java" name="modelo.complementos.Fichero" project="LaberintoFM" 
     file="/LaberintoFM/src/modelo/complementos/Fichero.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1011" y="659"/>    
+    <position height="-1" width="-1" x="987" y="594"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -227,59 +227,59 @@
     </display>  
   </class>  
   <generalization id="26">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <generalization id="27">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <generalization id="28">    
     <end type="SOURCE" refId="24"/>    
     <end type="TARGET" refId="21"/>  
   </generalization>  
-  <realization id="29">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="11"/>  
-  </realization>  
-  <association id="30">    
-    <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="31" name="lab"/>      
-      <multiplicity id="32" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="33">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="34" name="habitaciones"/>      
-      <multiplicity id="35" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="36">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="11"/>  
-  </realization>  
-  <generalization id="37">    
-    <end type="SOURCE" refId="23"/>    
-    <end type="TARGET" refId="21"/>  
+  <generalization id="27">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="4"/>  
   </generalization>  
-  <generalization id="38">    
-    <end type="SOURCE" refId="2"/>    
+  <generalization id="28">    
+    <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <dependency id="39">    
+  <generalization id="29">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <dependency id="30">    
     <end type="SOURCE" refId="22"/>    
     <end type="TARGET" refId="25"/>  
   </dependency>  
-  <association id="40">    
+  <generalization id="31">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <generalization id="32">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <association id="33">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="34" name="pos"/>      
+      <multiplicity id="35" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="36">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <association id="37">    
     <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="41" name="builder"/>      
-      <multiplicity id="42" minimum="0" maximum="1"/>    
+      <attribute id="38" name="builder"/>      
+      <multiplicity id="39" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="40">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="41" name="lab"/>      
+      <multiplicity id="42" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <generalization id="43">    
@@ -287,69 +287,69 @@
     <end type="TARGET" refId="4"/>  
   </generalization>  
   <generalization id="44">    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="5"/>  
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
   </generalization>  
   <generalization id="45">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="1"/>  
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="21"/>  
   </generalization>  
-  <generalization id="46">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <association id="47">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="48" name="pos"/>      
-      <multiplicity id="49" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="50">    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="5"/>  
-  </generalization>  
-  <realization id="51">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="11"/>  
-  </realization>  
-  <generalization id="52">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <association id="53">    
-    <end type="SOURCE" refId="24" navigable="false">      
-      <attribute id="54" name="lab"/>      
-      <multiplicity id="55" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="56">    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="4"/>  
-  </generalization>  
-  <association id="57">    
+  <association id="46">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="58" name="tablero"/>      
-      <multiplicity id="59" minimum="0" maximum="2147483647"/>    
+      <attribute id="47" name="tablero"/>      
+      <multiplicity id="48" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="60">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="6"/>  
+  <realization id="49">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <generalization id="50">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="8"/>  
   </generalization>  
-  <association id="61">    
+  <realization id="51">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <realization id="52">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <generalization id="53">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <association id="54">    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="62" name="c"/>      
-      <multiplicity id="63" minimum="0" maximum="1"/>    
+      <attribute id="55" name="c"/>      
+      <multiplicity id="56" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <association id="57">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="58" name="habitaciones"/>      
+      <multiplicity id="59" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="60">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="61" name="lab"/>      
+      <multiplicity id="62" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="63">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

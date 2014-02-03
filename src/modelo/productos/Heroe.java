@@ -18,6 +18,7 @@ public class Heroe extends Personaje {
         super();
         setComp(new ComportamientoNormal());
         setImagen('@');
+        setRutaImg("images/mario.png");
     }
     /**
      * Constructor Heroe con comportamiento asignado.
@@ -26,6 +27,7 @@ public class Heroe extends Personaje {
     public Heroe(final IComportamiento comp) {
         super(comp);
         setImagen('@');
+        setRutaImg("images/mario.png");
     }
 
     /**
@@ -37,5 +39,6 @@ public class Heroe extends Personaje {
         super(comp);
         setImagen('@');
         setPos(posicion);
+        setRutaImg("images/mario.png");
     }
 }
